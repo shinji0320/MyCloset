@@ -1,0 +1,6 @@
+<% @items.each do |item| %>
+<div>
+  <%= attachment_image_tag item, :image %>
+  <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
+</div>
+<% end %>
