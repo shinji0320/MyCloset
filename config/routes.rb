@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homes#top'
   get 'homes/about'
+  get '/search', to: 'searchs#search'
   resources :items do
     resources :item_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]

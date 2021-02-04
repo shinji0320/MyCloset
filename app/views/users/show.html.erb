@@ -1,7 +1,14 @@
-<div class="profile-container">
-  <h3 class="profile-name"><%= @user.name %></h3>
-  <%= image_tag('top.jpg') %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="profile-container">
+        <h3 class="profile-name"><%= @user.name %></h3>
+        <%= image_tag('top.jpg') %>
+        <% if @user.id == current_user.id %>
+          <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+

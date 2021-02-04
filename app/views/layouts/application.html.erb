@@ -23,6 +23,7 @@
        <li><%= link_to "ログイン", new_user_session_path %></li>
     <% end %>
     <p id="notice"><%= notice %></p>
+    <%= render 'searchs/form' %>
     <%= yield %>
   </body>
 </html>
