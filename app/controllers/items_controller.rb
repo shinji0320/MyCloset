@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
   end
 
   def create
@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
 
   def show
     @Item = Item.find(params[:id])
+    @item_comment = ItemComment.new
   end
 
   def edit

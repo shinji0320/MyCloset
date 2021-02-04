@@ -2,5 +2,7 @@
 <div>
   <%= attachment_image_tag item, :image %>
   <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
+  <p><%= link_to "#{item.item_comments.count} コメント", item_path(item.id) %></p>
 </div>
 <% end %>
+<%= paginate @items %>
