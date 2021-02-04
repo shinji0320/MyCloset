@@ -1,2 +1,13 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="post-body">
+  <%= attachment_image_tag @item, :image %>
+  
+  <p>ジャンル名：<%= @item.genre_id %></p>
+  <p>説明：<%= @item.detail %></p>
+  <p>ブランド名：<%= @item.shop_name %></p>
+  <p>公開？：<%= @item.caption %></p>
+  <% if @item.user == current_user %>
+    <%= link_to "削除", item_path(@item), method: :delete %>
+  <% end %>
+</div>
+
+<div>コメント機能</div>
