@@ -20,8 +20,8 @@
   </div>
 
   <div class="new-comment">
-  <%= form_with(model:[@item, @item_comment], local: true) do |f| %>
-    <%= f.select:score, [['1'], ['2'], ['3'], ['4'], ['5']], prompt: "1" %><br >
+  <%= form_with model:[@item, @item_comment], local: true do |f| %>
+    
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br >
     <%= f.submit "送信する" %>
   <% end %>
