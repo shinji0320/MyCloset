@@ -35,7 +35,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:genre_id, :item, :shop_name, :detail, :image)
+    params.require(:item).permit(:genre_id, :name, :shop_name, :detail, :image)
+    # score
   end
 
 end
