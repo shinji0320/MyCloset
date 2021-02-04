@@ -1,41 +1,41 @@
 <div class="post-body">
   <%= attachment_image_tag @item, :image %>
-  
-  <p>ジャンル名：<%= @item.genre_id %></p>
+
+  <p>ジャンル名：<%= @item.genre.name %></p>
   <p>説明：<%= @item.detail %></p>
   <p>ブランド名：<%= @item.shop_name %></p>
-  <p>公開？：<%= @item.caption %></p>
+  <p>公開？：<%= @item.private %></p>
   <% if @item.user == current_user %>
     <%= link_to "削除", item_path(@item), method: :delete %>
   <% end %>
 </div>
 
 <div class="comments">
-  <p>コメント件数：<%= @item.post_comments.count %></p>
+  <p>コメント件数：<%= @item.item_comments.count %></p>
   <% @item.item_comments.each do |item_comment| %>
     <p><%= image_tag('top.jpg') %></p>
     <%= item_comment.user.name %>
     <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
   <% end %>
   </div>
-  
+
   <div class="new-comment">
   <%= form_with(model:[@item, @item_comment], local: true) do |f| %>
-    <%= f.select:score, [['1'], ['2'], ['3'], ['4'], ['5']], prompt: "1" %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.select:score, [['1'], ['2'], ['3'], ['4'], ['5']], prompt: "1" %><br >
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br >
     <%= f.submit "送信する" %>
   <% end %>
 </div>
 
 <% if @item.favorited_by?(current_user) %>
     <p>
-      <%= link_to item_favorites_path(@item), method: :delete do %>
+      <%= link_to favorites_path(@item), method: :delete do %>
         ♥<%= @item.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to item_favorites_path(@item), method: :post do %>
+      <%= link_to favorites_path(@item), method: :post do %>
         ♡<%= @item.favorites.count %> いいね
       <% end %>
     </p>

@@ -14,6 +14,9 @@ Genre.create!(
             name: "トップス"
         },
         {
+            name: "ボトムス"
+        },
+        {
             name: "スカート"
         },
         {

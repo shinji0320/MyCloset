@@ -1,8 +1,16 @@
 <% @items.each do |item| %>
 <div>
   <%= attachment_image_tag item, :image %>
-  <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
+  <p><%= item.genre.name%></p>
+  <p><%= item.name%></p>
+  <p><%= item.shop_name%></p>
+  <p><%= image_tag('no_image.jpg') %></p>
   <p><%= link_to "#{item.item_comments.count} コメント", item_path(item.id) %></p>
+  <p>
+    <% if item.user == current_user %>
+      <%= link_to "削除", item_path(item), method: :delete %>
+    <% end %>
+  </p>
 </div>
 <% end %>
 <%= paginate @items %>
