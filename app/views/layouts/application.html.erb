@@ -10,20 +10,25 @@
   </head>
 
   <body>
+    <div class="header list-unstyled">
      <% if user_signed_in? %>
-       <li><%= link_to 'トップ', root_path %></li>
-       <li><%= link_to 'about', homes_about_path %></li>
-       <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-       <li><%= link_to '投稿フォーム', new_item_path %></li>
-       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-       <li><%= link_to 'トップ', root_path %></li>
-       <li><%= link_to 'about', homes_about_path %></li>
-       <li><%= link_to "新規登録", new_user_registration_path %></li>
-       <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
+       <li><%= link_to 'トップ', root_path, class: "text-white" %></li>
+       <li><%= link_to 'about', homes_about_path, class: "text-white" %></li>
+       <li><%= link_to 'マイページ', user_path(current_user.id), class: "text-white" %></li>
+       <li><%= link_to '投稿フォーム', new_item_path, class: "text-white" %></li>
+       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></li>
+     <% else %>
+       <li><%= link_to 'トップ', root_path, class: "text-white" %></li>
+       <li><%= link_to 'about', homes_about_path, class: "text-white" %></li>
+       <li><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></li>
+       <li><%= link_to "ログイン", new_user_session_path, class: "text-white" %></li>
+     <% end %>
+    </div>
     <p id="notice"><%= notice %></p>
     <%= render 'searchs/form' %>
     <%= yield %>
+    <div class="footer py-3">
+      <p class="text-center text-white">shinji.com</p>
+    </div>
   </body>
 </html>
