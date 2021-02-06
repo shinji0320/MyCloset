@@ -3,6 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <% if user_signed_in? %>
+        <% else %>
+          <%= form_with(model: User.new, url:new_user_session_path) do |f| %>
+           <%= f.hidden_field :email, value: "guest@example.com" %>
+           <%= f.hidden_field :password, value: "111111" %>
+           <%= f.submit "ゲストログイン", class:"btn btn-success btn-sm mb-3 btn-block guest"%>
+          <% end %>
+        <% end %>
       <%= image_tag 'top.jpg', :size => '500x350'%>
       <p>
         作った背景<br>
