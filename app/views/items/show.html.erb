@@ -1,40 +1,39 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-3">
       <div class="post-body">
-      <%= attachment_image_tag @item, :image %>
+        <p><%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></p>
+        <p>ジャンル名：<%= @item.genre.name %></p>
+        <p>アイテム名：<%= @item.name %></p>
+        <p>ブランド名：<%= @item.shop_name %></p>
+        <p>説明：<%= @item.detail %></p>
+        <p>公開？：<%= @item.private %></p>
+        <%= render 'items/favorites', item: @item %>
+        <p><i class="far fa-comment-dots"></i><%= @item.item_comments.count %></p>
 
-      <p>ジャンル名：<%= @item.genre.name %></p>
-      <p>説明：<%= @item.detail %></p>
-      <p>ブランド名：<%= @item.shop_name %></p>
-      <p>公開？：<%= @item.private %></p>
-     <%= render 'items/favorites', item: @item %>
-      <% if @item.user == current_user %>
-        <%= link_to "アイテムを削除", item_path(@item), method: :delete %>
-      <% end %>
-    </div>
+        <% if @item.user == current_user %>
+          <%= link_to "アイテムを削除", item_path(@item), method: :delete %>
+        <% end %>
 
-    <div class="comments">
-      <p>コメント件数：<%= @item.item_comments.count %></p>
-      <% @item.item_comments.each do |item_comment| %>
-        <!--投稿した人のアイコン-->
-        <p><%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></p>
-        <%= item_comment.user.name %>
-        <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
-          <% if item_comment.user == current_user %>
-            <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), method: :delete %>
-          <% end %>
-      <% end %>
+        <%= form_with model:[@item, @item_comment], local: true do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br >
+          <%= f.submit "送信する" %>
+        <% end %>
       </div>
-
-      <div class="new-comment">
-      <%= form_with model:[@item, @item_comment], local: true do |f| %>
-
-        <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br >
-        <%= f.submit "送信する" %>
-      <% end %>
     </div>
 
+    <div class="col-6">
+      <div class="comments">
+        <p>コメント一覧</p>
+        <% @item.item_comments.each do |item_comment| %>
+          <p><%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></p>
+          <%= item_comment.user.name %>
+          <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
+            <% if item_comment.user == current_user %>
+              <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), method: :delete %>
+            <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
