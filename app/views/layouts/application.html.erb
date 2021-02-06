@@ -20,16 +20,16 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
          <% if user_signed_in? %>
-           <li><%= link_to 'トップ', root_path, class: "text-white" %></li>
-           <li><%= link_to 'about', homes_about_path, class: "text-white" %></li>
-           <li><%= link_to 'マイページ', user_path(current_user.id), class: "text-white" %></li>
-           <li><%= link_to '投稿フォーム', new_item_path, class: "text-white" %></li>
-           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></li>
+           <li><%= link_to '投稿一覧', items_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to 'MyCloset', user_path(current_user.id), class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to 'ユーザー一覧', users_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to '投稿フォーム', new_item_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
          <% else %>
-           <li><%= link_to 'トップ', root_path, class: "text-white" %></li>
-           <li><%= link_to 'about', homes_about_path, class: "text-white" %></li>
-           <li><%= link_to "新規登録", new_user_registration_path, class: "text-white" %></li>
-           <li><%= link_to "ログイン", new_user_session_path, class: "text-white" %></li>
+           <li><%= link_to '投稿一覧', items_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to 'about', homes_about_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to "新規登録", new_user_registration_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
+           <li><%= link_to "ログイン", new_user_session_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
          <% end %>
         </ul>
       </div>

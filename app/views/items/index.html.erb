@@ -1,28 +1,23 @@
 <div class="container">
   <div class="row">
-      <% @items.each do |item| %>
-      <div class="col-4">
-       <div class="card my-2" style="width: 18rem;">
-         <%= attachment_image_tag item, :image %>
-         <div class="card-body">
-          <h5 class="card-title"><%= item.name %></h5>
+   <% @items.each do |item| %>
+    <div class="col-4">
+      <div class="card my-2" style="width: 18rem;">
+       <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+       <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
           <p class="card-text">
-            <%= item.genre.name%><br >
-            <%= item.shop_name %><br >
-            <%= item.detail %>
+            <%= item.name%><br >
+            <%= item.shop_name %>
           </p>
           <p>
             <%= link_to "#{item.item_comments.count} コメント", item_path(item.id), class: "btn btn-primary" %>
           </p>
-          <p>
-            <% if item.user == current_user %>
-              <%= link_to "削除", item_path(item), method: :delete %>
-            <% end %>
-          </p>
+          <%= render 'items/favorites', item: item %>
         </div>
-       </div>
+      </div>
     </div>
-      <% end %>
+   <% end %>
   </div>
 </div>
 
