@@ -24,6 +24,41 @@
       </div>
     </div>
 
+
+    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">ジャンル名：<%= @item.genre.name %></p>
+        <p class="card-text">アイテム名：<%= @item.name %></p>
+        <p class="card-text">ブランド名：<%= @item.shop_name %></p>
+        <p class="card-text">説明：<%= @item.detail %></p>
+         <p class="card-text">公開？：<%= @item.private %></p>
+
+        <p class="card-text"><small class="text-muted"><%= @item.created_at.strftime('%Y/%m/%d') %></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="col-6">
       <div class="comments">
         <p>コメント一覧</p>
