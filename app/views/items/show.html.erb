@@ -8,15 +8,17 @@
         <p>ブランド名：<%= @item.shop_name %></p>
         <p>説明：<%= @item.detail %></p>
         <p>公開？：<%= @item.private %></p>
-        <%= render 'items/favorites', item: @item %>
-        <p><i class="far fa-comment-dots"></i><%= @item.item_comments.count %></p>
+        <div class="row">
+          <p class="col-6"><i class="far fa-comment-dots"></i><%= @item.item_comments.count %></p>
+          <%= render 'items/favorites', item: @item %>
+        </div>
 
         <% if @item.user == current_user %>
-          <%= link_to "アイテムを削除", item_path(@item), method: :delete %>
+          <%= link_to "アイテムを削除", item_path(@item), method: :delete, class: "btn btn-danger m-2" %>
         <% end %>
 
         <%= form_with model:[@item, @item_comment], local: true do |f| %>
-          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br >
+          <%= f.text_area :comment, rows:'5',placeholder: "コメント記入" %><br >
           <%= f.submit "送信する" %>
         <% end %>
       </div>

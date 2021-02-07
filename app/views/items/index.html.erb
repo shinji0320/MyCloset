@@ -13,8 +13,10 @@
           <p>
             <%= link_to "詳細をみる", item_path(item.id), class: "btn btn-primary" %>
           </p>
-          <p><i class="far fa-comment-dots"></i><%= "#{item.item_comments.count}"%></p>
-          <%= render 'items/favorites', item: item %>
+          <div class="row">
+            <p class="col-6"><i class="far fa-comment-dots"></i><%= "#{item.item_comments.count}"%></p>
+            <%= render 'items/favorites', item: item %>
+          </div>
         </div>
       </div>
     </div>
