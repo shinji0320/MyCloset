@@ -1,15 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-4">
       <table class='table'>
         <tr><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></tr>
         <tr>
-      	  <th>name</th>
+      	  <th>名前</th>
       	  <th><%= @user.name %></th>
-        </tr>
-        <tr>
-      	  <th>introduction</th>
-      	  <th><%= @user.introduction %></th>
         </tr>
         <tr>
       	  <th>follows</th>
@@ -20,20 +16,16 @@
       	  <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
         </tr>
         <tr>
-          <th><%= render 'relationships/follow_button', user: @user %></th>
+        <tr>
+      	  <th>紹介文</th>
+      	  <th><%= @user.introduction %></th>
+        </tr>
+          <th class="follow"><%= render 'relationships/follow_button', user: @user %></th>
         </tr>
       </table>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
+    <div class="col-8">
       <section>
         <h5>My Items</h5>
         <% @user.items.each do |item| %>
@@ -42,6 +34,7 @@
           <% end %>
         <% end %>
       </section>
+    </div>
     </div>
   </div>
 </div>
