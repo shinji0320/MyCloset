@@ -18,7 +18,9 @@
             <%= render 'items/favorites', item: item %>
           </div>
           <div>
-            <%= link_to "item.user.name", user_path(item.user) %>
+            <%= link_to user_path(item.user) do %>
+              <%= item.user.name %>
+            <% end %>
           </div>
         </div>
       </div>
