@@ -1,65 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <div class="post-body">
-        <p><%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></p>
-        <p>ジャンル名：<%= @item.genre.name %></p>
-        <p>アイテム名：<%= @item.name %></p>
-        <p>ブランド名：<%= @item.shop_name %></p>
-        <p>説明：<%= @item.detail %></p>
-        <p>公開？：<%= @item.private %></p>
-        <div class="row">
-          <p class="col-6"><i class="far fa-comment-dots"></i><%= @item.item_comments.count %></p>
-          <%= render 'items/favorites', item: @item %>
+    <div class="col">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "200x200" %>
+          </div>
+              <div class="card-body col-md-6">
+                <h5 class="card-title">アイテムの詳細</h5>
+                <p class="card-text">ジャンル名:<%= @item.genre.name %></p>
+                <p class="card-text">商品名　　:<%= @item.name %></p>
+                <p class="card-text">ブランド名:<%= @item.shop_name %></p>
+                <p class="card-text">説明　　　:<%= @item.detail %></p>
+                <p class="card-text">公開？　　:<%= @item.private %></p>
+                <div class="row">
+                  <p class="col-6"><i class="far fa-comment-dots"></i><%= @item.item_comments.count %></p>
+                  <%= render 'items/favorites', item: @item %>
+                </div>
+                <% if @item.user == current_user %>
+                  <%= link_to "アイテムを削除", item_path(@item), method: :delete, class: "btn btn-danger m-2" %>
+                <% end %>
+                <%= form_with model:[@item, @item_comment], local: true do |f| %>
+                  <%= f.text_area :comment, rows:'5',placeholder: "コメント記入" %><br >
+                  <%= f.submit "送信する" %>
+                <% end %>
+              <p class="card-text"><small class="text-muted"><%= @item.created_at.strftime('%Y/%m/%d') %></small></p>
+            </div>
+          </div>
         </div>
-
-        <% if @item.user == current_user %>
-          <%= link_to "アイテムを削除", item_path(@item), method: :delete, class: "btn btn-danger m-2" %>
-        <% end %>
-
-        <%= form_with model:[@item, @item_comment], local: true do |f| %>
-          <%= f.text_area :comment, rows:'5',placeholder: "コメント記入" %><br >
-          <%= f.submit "送信する" %>
-        <% end %>
       </div>
     </div>
 
-
-    <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">ジャンル名：<%= @item.genre.name %></p>
-        <p class="card-text">アイテム名：<%= @item.name %></p>
-        <p class="card-text">ブランド名：<%= @item.shop_name %></p>
-        <p class="card-text">説明：<%= @item.detail %></p>
-         <p class="card-text">公開？：<%= @item.private %></p>
-
-        <p class="card-text"><small class="text-muted"><%= @item.created_at.strftime('%Y/%m/%d') %></small></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="col-6">
+    <div class="col">
       <div class="comments">
         <p>コメント一覧</p>
         <% @item.item_comments.each do |item_comment| %>

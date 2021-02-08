@@ -17,6 +17,9 @@
             <p class="col-6"><i class="far fa-comment-dots"></i><%= "#{item.item_comments.count}"%></p>
             <%= render 'items/favorites', item: item %>
           </div>
+          <div>
+            <%= link_to "item.user.name", user_path(item.user) %>
+          </div>
         </div>
       </div>
     </div>
