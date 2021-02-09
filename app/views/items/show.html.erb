@@ -4,13 +4,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-6">
-            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "200x200" %>
-            <p class="m-3">
-              <%= form_with model:[@item, @item_comment] do |f| %>
-                <%= f.text_area :comment, rows:'5',placeholder: "コメント記入" %><br >
-                <%= f.submit "送信する" %>
-              <% end %>
-            </p>
+            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "200x200"   %>
           </div>
               <div class="card-body col-md-6">
                 <h5 class="card-title">アイテムの詳細</h5>
@@ -43,7 +37,43 @@
       </div>
     </div>
 
-    <div class="col">
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-3">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            コメントを書く
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><%= @item.name %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%= form_with model:[@item, @item_comment] do |f| %>
+          <div class="modal-body">
+               <div class="form-group">
+                <%= f.label :コメント %>
+                <%= f.text_area :comment, placeholder: "ここへ記入", class: "form-control-file" %>
+              </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <%= f.submit "送信する", class: 'btn btn-success'%>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="col">
         <p>コメント一覧</p>
       <div class="comments">
           <%= render 'items/comment', item: @item, item_comment: @item_comment %>

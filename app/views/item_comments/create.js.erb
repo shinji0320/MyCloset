@@ -1,3 +1,4 @@
+$("#item_comment_comment").val("");
+$("#exampleModal").modal("hide");
 $(".comments-count").html("<%= @item.item_comments.count %>");
 $(".comments").html("<%= j(render 'items/comment', item: @item, item_comment: @item_comment) %>");
-$("#item_comment_comment").val("");

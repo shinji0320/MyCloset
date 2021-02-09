@@ -1,10 +1,21 @@
  <table class="item_comments">
-<% item.item_comments.each do |item_comment| %>
-  <p><%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100" %></p>
-  <%= item_comment.user.name %>
-  <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
+<% item.item_comments.order(created_at: :desc) .each do |item_comment| %>
+
+  <tr>
+    <td>
+      <%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100",class: "m-2 rounded-circle" %>
+    </td>
+    <td>
+      <%= item_comment.user.name %>
+    </td>
+    <td>
+      <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
+    </td>
     <% if item_comment.user == current_user %>
-      <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), class: "btn btn-secondary", method: :delete, remote: true  %>
+      <td>
+        <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), class: "btn btn-secondary", method: :delete, remote: true  %>
+      </td>
     <% end %>
+  </tr>
 <% end %>
 </table>
