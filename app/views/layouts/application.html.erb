@@ -10,36 +10,38 @@
   </head>
 
   <body>
-   <header>
-  <nav class="header navbar navbar-expand-lg navbar-dark ">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>My Closet</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-         <% if user_signed_in? %>
-           <li><%= link_to '投稿一覧', items_path, class: "fas fa-store-alt nav-link text-white m-3" %></li>
-           <li><%= link_to 'MyCloset', user_path(current_user.id), class: "fas fa-home nav-link text-white m-3" %></li>
-           <li><%= link_to 'ユーザー一覧', users_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
-           <li><%= link_to '投稿フォーム', new_item_path, class: "fas fa-shopping-cart nav-link text-white m-3" %></li>
-           <li><%= link_to "log_out", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white m-3" %></li>
-         <% else %>
-           <li><%= link_to 'about', homes_about_path, class: "fas fa-paper-plane nav-link text-white m-3" %></li>
-           <li><%= link_to "sign_in", new_user_registration_path, class: "fas fa-user-plus nav-link text-white m-3" %></li>
-           <li><%= link_to "log_in", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-white m-3" %></li>
-           <li><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "fas fa-sign-in-alt nav-link text-white m-3" %></li>
-         <% end %>
-        </ul>
-      </div>
+    <div class="header">
+      <nav class="header navbar navbar-expand-lg navbar-dark ">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>My Closet</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+             <% if user_signed_in? %>
+               <li><%= link_to '投稿一覧                ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
+               <li><%= link_to 'MyCloset                ', user_path(current_user.id), class: "fas fa-home nav-link text-white p-3" %></li>
+               <li><%= link_to 'ユーザー一覧            ', users_path, class: "fas fa-shopping-cart nav-link text-white p-3" %></li>
+               <li><%= link_to '投稿フォーム            ', new_item_path, class: "fas fa-shopping-cart nav-link text-white p-3" %></li>
+               <li><%= link_to 'log_out                 ', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white p-3" %></li>
+             <% else %>
+               <li><%= link_to 'about                   ', homes_about_path, class: "fas fa-paper-plane nav-link text-white p-3" %></li>
+               <li><%= link_to 'sign_in                 ', new_user_registration_path, class: "fas fa-user-plus nav-link text-white p-3" %></li>
+               <li><%= link_to 'log_in                  ', new_user_session_path, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
+               <li><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
+             <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-  </nav>
-</header>
-    <p id="notice"><%= notice %></p>
-    <%= render 'searchs/form' %>
-    <%= yield %>
-    <div class="footer mt-3 py-3">
+      <p id="notice"><%= notice %></p>
+      <div class="main pb-3">
+        <%= render 'searchs/form' %>
+        <%= yield %>
+      </div>
+    <div class="footer py-3">
       <p class="text-center text-white">shinji.com</p>
     </div>
   </body>
