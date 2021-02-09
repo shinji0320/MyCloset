@@ -4,7 +4,10 @@ class ItemCommentsController < ApplicationController
     @item_comment = ItemComment.new(item_comment_params)
     @item_comment.item_id = @item.id
     @item_comment.user_id = current_user.id
-    @item_comment.save
+    if @item_comment.save
+    else
+      render :show
+    end
   end
 
   def destroy

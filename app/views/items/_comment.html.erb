@@ -1,6 +1,5 @@
  <table class="item_comments">
 <% item.item_comments.order(created_at: :desc) .each do |item_comment| %>
-
   <tr>
     <td>
       <%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100",class: "m-2 rounded-circle" %>
