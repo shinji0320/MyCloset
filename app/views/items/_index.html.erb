@@ -1,0 +1,25 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>写真</th>
+      <th>アイテム名</th>
+      <th>ショップ名</th>
+      <th>コメント数</th>
+      <th>いいねの数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <td><%= link_to item_path(item) do %>
+           <%= attachment_image_tag item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "m-2 rounded-circle" %>
+          <% end %>
+        </td>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.shop_name %></td>
+        <td><%= item.item_comments.count%></td>
+        <td> <%= render 'items/favorites', item: item %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
