@@ -7,12 +7,14 @@ class Item < ApplicationRecord
   validates :shop_name, presence: true, length: {maximum: 200}
 	validates :detail, presence: true, length: {maximum: 200}
 	validates :private, inclusion:{in: [true, false]}
-  attachment :image 
- 
+  attachment :image
+  # acts_as_taggable_on :name
+
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       Item.where(name: content)
