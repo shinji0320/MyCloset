@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-       redirect_to request.referer
+       redirect_to items_path
     else
       render :new
     end
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_comment = ItemComment.new
-    # @tags = @post.tag_counts_on(:tags)    # 投稿に紐付くタグの表示
+    # @tags = @item.tag_counts_on(:tags)    # 投稿に紐付くタグの表示
   end
 
   def edit

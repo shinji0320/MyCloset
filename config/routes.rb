@@ -4,17 +4,15 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
   get '/search', to: 'searchs#search'
+
   resources :items do
-    get 'get_tag_search', on: :collection, defaults: { format: 'json' }
-    get 'get_tag_search', on: :member, defaults: { format: 'json' }
     resources :item_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :show, :edit, :update] do
+
+  resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

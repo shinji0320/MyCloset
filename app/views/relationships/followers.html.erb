@@ -1,6 +1,6 @@
-<h2>Follower Users</h2>
+<h2>フォロワー</h2>
 <% if @users.exists? %>
-  <%= render '/relationships/follow_user', users: @users %>
+  <%= render 'relationships/follow_user', users: @users %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

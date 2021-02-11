@@ -1,31 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <table class='table'>
-        <tr><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "rounded-circle" %></tr>
-        <tr>
-      	  <th>名前</th>
-      	  <th><%= @user.name %></th>
-        </tr>
-        <tr>
-      	  <th>follows</th>
-      	  <th><%= link_to @user.followings.count, user_followings_path(@user) %></th>
-        </tr>
-        <tr>
-      	  <th>followers</th>
-      	  <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
-        </tr>
-        <tr>
-        <tr>
-      	  <th>紹介文</th>
-      	  <th><%= @user.introduction %></th>
-        </tr>
-          <th class="follow"><%= render 'relationships/follow_button', user: @user %></th>
-        </tr>
-      </table>
-    </div>
+    <div class="col">
+       <div class="row">
+          <div class="col-2"><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "rounded-circle" %></div>
+          <div class="col-2 text-center">名前:<%= @user.name %></div>
+          <div class="col-2 text-center">フォロー中:<%= link_to @user.followings.count, user_followings_path(@user) %></div>
+          <div class="col-2 text-center">フォロワー:<%= link_to @user.followers.count, user_followers_path(@user) %></div>
+          <div class="col-1 follow text-center"><%= render 'relationships/follow_button', user: @user %></div>
+       </div>
+       <div class="row m-4">
+         紹介文:<%= @user.introduction %>
+       </div>
 
-    <div class="col-8">
       <section>
         <h5>My Items</h5>
         <% @user.items.each do |item| %>

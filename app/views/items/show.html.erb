@@ -1,15 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col">
-
-
-
-
-
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-6">
-            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "200x200"   %>
+            <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "200x200", class: "m-2"    %>
           </div>
               <div class="card-body col-md-6">
                 <h5 class="card-title">アイテムの詳細</h5>
