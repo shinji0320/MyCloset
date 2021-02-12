@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).reverse_order
+    @item_comment = ItemComment.new
   end
 
   def create

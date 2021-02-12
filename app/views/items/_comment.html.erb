@@ -1,20 +1,19 @@
- <table class="item_comments">
 <% item.item_comments.order(created_at: :desc) .each do |item_comment| %>
-  <tr>
-    <td>
-      <%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100",class: "m-2 rounded-circle" %>
-    </td>
-    <td>
-      <%= item_comment.user.name %>
-    </td>
-    <td>
-      <%= item_comment.created_at.strftime('%Y/%m/%d') %><%= item_comment.comment %>
-    </td>
-    <% if item_comment.user == current_user %>
+ <table class="table">
+   <tbody>
+    <tr>
       <td>
-        <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), class: "btn btn-secondary", method: :delete, remote: true  %>
+        <%= attachment_image_tag item_comment.user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100",class: "m-2 rounded-circle" %>
       </td>
-    <% end %>
-  </tr>
-<% end %>
+      <td><%= item_comment.user.name %></td>
+      <td><%= item_comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= item_comment.comment %></td>
+      <% if item_comment.user == current_user %>
+        <td>
+          <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), class: "btn btn-secondary", method: :delete, remote: true  %>
+        </td>
+      <% end %>
+    </tr>
+   </tbody>
 </table>
+<% end %>

@@ -20,8 +20,8 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
              <% if user_signed_in? %>
-               <li><%= link_to '投稿一覧                ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
                <li><%= link_to 'MyCloset                ', user_path(current_user.id), class: "fas fa-home nav-link text-white p-3" %></li>
+               <li><%= link_to '投稿一覧                ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
                <li><%= link_to '投稿フォーム            ', new_item_path, class: "fas fa-shopping-cart nav-link text-white p-3" %></li>
                <li><%= link_to 'log_out                 ', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white p-3" %></li>
              <% else %>
