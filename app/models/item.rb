@@ -8,7 +8,6 @@ class Item < ApplicationRecord
 	validates :detail, presence: true, length: {maximum: 200}
 	validates :private, inclusion:{in: [true, false]}
   attachment :image
-  # acts_as_taggable_on :name
 
 
   def favorited_by?(user)

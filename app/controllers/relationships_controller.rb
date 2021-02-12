@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     following = current_user.follow(@user)
     following.save
-    flash[:success] = 'ユーザーをフォローしました'
+    flash[:success] = 'フォローしました'
 
   end
 
@@ -11,7 +11,7 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     following = current_user.unfollow(@user)
     following.destroy
-    flash[:success] = 'ユーザーのフォローを解除しました'
+    flash[:success] = 'フォローを解除しました'
   end
 
   def followings
