@@ -2,14 +2,13 @@ class CoordinetesController < ApplicationController
 
   def index
     @coordinetes = Coordinete.all
-    @new_coordinete = Coordinete.new
+    @coordinete = Coordinete.new
   end
 
   def create
-    @coordinete = Coordinete.find(params[:id])
-    @new_coordinete = Coordinete.new(coordinete_params)
-    @coordinete.user_id = current_user.id
+    @coordinete = Coordinete.new(coordinete_params)
     if @coordinete.save
+       flash[:notice] = "コーディネートを追加しました"
        redirect_to coordinetes_path
     else
       render :index
@@ -42,7 +41,6 @@ class CoordinetesController < ApplicationController
 
   def coordinete_params
     params.require(:coordinete).permit(:name, :item_id)
-    # score
   end
 
 end
