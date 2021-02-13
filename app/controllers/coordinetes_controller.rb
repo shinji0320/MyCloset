@@ -43,7 +43,6 @@ class CoordinetesController < ApplicationController
   private
 
   def coordinete_params
-    # binding.pry
     params.require(:coordinete).permit(:name)
   end
 

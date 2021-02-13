@@ -72,6 +72,9 @@
              <td>
               <% coordinete.coordinete_tables.each.with_index(1) do |coordinete_table, index| %>
                 <%= "#{coordinete_table.item.name} #{'x' if index < coordinete.coordinete_tables.size}" %>
+                
+            <td><%= link_to "edit", edit_coordinete_path(coordinete_table.coordinete.id) %></td>
+            <td><%= link_to "destroy", coordinete_path(coordinete_table.coordinete.id) %></td>
               <% end %>
             </td>
           </tr>
