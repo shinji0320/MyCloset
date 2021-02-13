@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  # before_action :ranks, only: [:index]
+
   def new
     @item = Item.new
   end
@@ -47,9 +49,12 @@ class ItemsController < ApplicationController
 
   private
 
+  def ranks
+    @all_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+  end
+
   def item_params
     params.require(:item).permit(:genre_id, :name, :shop_name, :detail, :image, :private)
     # score
   end
-
 end

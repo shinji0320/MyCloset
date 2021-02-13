@@ -7,6 +7,9 @@ class CoordinetesController < ApplicationController
 
   def create
     @coordinete = Coordinete.new(coordinete_params)
+    item_ids.each do |item_id|
+      @coordinete.coordinete_tables.new(item_id: item_id)
+    end
     if @coordinete.save
        flash[:notice] = "コーディネートを追加しました"
        redirect_to coordinetes_path
@@ -40,7 +43,11 @@ class CoordinetesController < ApplicationController
   private
 
   def coordinete_params
-    params.require(:coordinete).permit(:name, :item_id)
+    # binding.pry
+    params.require(:coordinete).permit(:name)
   end
 
+  def item_ids
+    params[:coordinete][:item_ids].values.map(&:to_i)
+  end
 end

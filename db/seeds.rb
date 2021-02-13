@@ -26,7 +26,7 @@ Genre.create!(
             name: "シューズ"
         }
     ]
-)
+) unless Genre.exists?
 User.create!(
     [
         {

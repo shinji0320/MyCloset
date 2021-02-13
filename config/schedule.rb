@@ -29,9 +29,12 @@ set :output, 'log/cron.log'
 #   rails 'db:seed'
 # end
 
-# every 2.minute do
+# every 1.minute do
 #   begin
 #     runner "Batch::DataReset.data_reset"
+#     rake 'db:migrate:reset'
+#     rake 'db:seed'
+
 #   rescue => e
 #     Rails.logger.error("aborted rails runner")
 #     raise e

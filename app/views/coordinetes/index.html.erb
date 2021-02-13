@@ -20,17 +20,17 @@
             <div class="modal-body">
               <div class="form-group">
                <%= f.label :アイテム① %>
-               <%= f.collection_select :item_id, Item.all, :id, :name %>
+               <%= f.collection_select 'item_ids[0]', Item.all, :id, :name %>
              </div>
 
              <div class="form-group">
                <%= f.label :アイテム② %>
-               <%= f.collection_select :item_id, Item.all, :id, :name %>
+               <%= f.collection_select 'item_ids[1]', Item.all, :id, :name %>
              </div>
 
              <div class="form-group">
                <%= f.label :アイテム③ %>
-               <%= f.collection_select :item_id, Item.all, :id, :name %>
+               <%= f.collection_select 'item_ids[2]', Item.all, :id, :name %>
              </div>
 
              <div class="form-group">
@@ -68,8 +68,8 @@
         <%= coordinete.name %>
       </td>
        <td>
-        <%= coordinete.items.each do |items| %>
-          <%= item.name %> x
+        <% coordinete.coordinete_tables.each.with_index(1) do |coordinete_table, index| %>
+          <%= "#{coordinete_table.item.name} #{'x' if index < coordinete.coordinete_tables.size}" %>
         <% end %>
       </td>
     </tr>
