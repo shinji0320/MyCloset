@@ -52,27 +52,32 @@
 
 
 
-
-<table class="table">
-  <thead>
-   <tr>
-    <th>コーディネート名</th>
-    <th>組み合わせ</th>
-    <th colspan="3"></th>
-   </tr>
-  </thead>
-  <tbody>
-   <% @coordinetes.each do |coordinete| %>
-    <tr>
-      <td>
-        <%= coordinete.name %>
-      </td>
-       <td>
-        <% coordinete.coordinete_tables.each.with_index(1) do |coordinete_table, index| %>
-          <%= "#{coordinete_table.item.name} #{'x' if index < coordinete.coordinete_tables.size}" %>
-        <% end %>
-      </td>
-    </tr>
-   <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+         <tr>
+          <th>コーディネート名</th>
+          <th>組み合わせ</th>
+          <th colspan="3"></th>
+         </tr>
+        </thead>
+        <tbody>
+         <% @coordinetes.each do |coordinete| %>
+          <tr>
+            <td>
+              <%= coordinete.name %>
+            </td>
+             <td>
+              <% coordinete.coordinete_tables.each.with_index(1) do |coordinete_table, index| %>
+                <%= "#{coordinete_table.item.name} #{'x' if index < coordinete.coordinete_tables.size}" %>
+              <% end %>
+            </td>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
