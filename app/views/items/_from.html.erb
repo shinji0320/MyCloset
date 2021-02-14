@@ -1,5 +1,5 @@
 <%= form_with model: item, local:true do |f| %>
- <div class="form-group">
+  <div class="form-group">
     <%= f.label :ジャンル %>
     <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   </div>
@@ -19,12 +19,17 @@
     <%= f.text_area :detail, class: 'form-control' %>
   </div>
 
-    <div class="form-group">
-        <%= f.label :写真 %>
-        <%= f.attachment_field :image, class: "form-control-file" %>
-    </div>
+  <div class="form-group">
+    <%= f.label :写真 %>
+    <%= f.attachment_field :image, class: "form-control-file" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.submit class: 'btn btn-success' %>
-    </div>
+  <div class="form-group">
+    <%= f.radio_button :private, false %><%= f.label :private, "非公開", class: "text-active" %>
+    <%= f.radio_button :private, true %><%= f.label :private, "公開", class: "text-invalid" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
 <% end %>

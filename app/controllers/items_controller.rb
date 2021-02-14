@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).reverse_order
+    @items = Item.where(private: "true").page(params[:page]).reverse_order
     @item_comment = ItemComment.new
   end
 
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
       redirect_to items_path
     end
   end
-
+  
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
     @all_comment_ranks = Item.find(ItemComment.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
     @all_genre_ranks = Item.find(Item.group(:genre_id).order('count(genre_id) desc').limit(3).pluck(:genre_id))
   end
-  
+
   def recommendations
       @recommendations = Recommendation.all
   end

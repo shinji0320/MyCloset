@@ -16,20 +16,3 @@ class Batch::DataReset
     }
   end
 end
-
-
-# ItemController#index の example
-# def index
-#     items = Item.where(private: "false")
-# end
-#
-# def displayable
-#     item = Item.find(params[:id])
-#     item.private = 'false'
-#     item.save!
-# end
-
-#
-# 1. Recommendationモデルをmigrate
-# 2. このbatchでItemモデルからおすすめの件を取得し, Recommendationにコピ-(create)
-# 3. Application側でRecommendationController#index を実装し一覧を表示する
