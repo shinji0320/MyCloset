@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :ranks, only: [:index]
+  before_action :recommendations, only: [:index]
 
   def new
     @item = Item.new
@@ -53,6 +54,10 @@ class ItemsController < ApplicationController
     @all_favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
     @all_comment_ranks = Item.find(ItemComment.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
     @all_genre_ranks = Item.find(Item.group(:genre_id).order('count(genre_id) desc').limit(3).pluck(:genre_id))
+  end
+  
+  def recommendations
+      @recommendations = Recommendation.all
   end
 
   def item_params

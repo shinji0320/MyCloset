@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_043534) do
+ActiveRecord::Schema.define(version: 2021_02_14_024038) do
 
   create_table "coordinete_tables", force: :cascade do |t|
     t.integer "item_id"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2021_02_12_043534) do
     t.string "shop_name"
     t.text "detail"
     t.boolean "private", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "user_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

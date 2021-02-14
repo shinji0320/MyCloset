@@ -20,9 +20,6 @@ class CoordinetesController < ApplicationController
 
   def edit
     @coordinete = Coordinete.find(params[:id])
-    if @coordinete.user != current_user
-      redirect_to items_path
-    end
   end
 
   def update

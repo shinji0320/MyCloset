@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :favorites, dependent: :destroy
   belongs_to :genre
   has_many :coordinete_tables, dependent: :destroy
+  has_many :recommendations
+  
   validates :name, presence: true,  length: { in: 2..30 }
   validates :shop_name, presence: true, length: {maximum: 200}
 	validates :detail, presence: true, length: {maximum: 200}
