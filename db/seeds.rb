@@ -48,8 +48,8 @@ User.create!(
             introduction: "休みの日はウィンドウショピングしてます"
         },
         {
-            name: "しんちゃん",
-            email: "shinji@example.com",
+            name: "まほちゃん",
+            email: "maho@example.com",
             password: "111111",
             introduction: "趣味は映画でホラー大好きです"
         },
@@ -63,13 +63,13 @@ User.create!(
             name: "イカちゃん",
             email: "ika@example.com",
             password: "111111",
-            introduction: "ドレスしか持っていないわ"
+            introduction: "普段はドレスしかきてません"
         },
         {
             name: "タコちゃん",
             email: "taco@example.com",
             password: "111111",
-            introduction: "フォフォフォフォフォ"
+            introduction: "お店経営してます。[taco_shop]"
         }
     ]
 )
@@ -81,7 +81,7 @@ Item.create!(
             name: "赤のジャケット",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
@@ -89,7 +89,7 @@ Item.create!(
             name: "赤のダウン",
             shop_name: "GU",
             detail: "3000円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
@@ -97,7 +97,7 @@ Item.create!(
             name: "赤のボトムス",
             shop_name: "GU",
             detail: "800円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "4",
@@ -105,7 +105,7 @@ Item.create!(
             name: "赤のパーカー",
             shop_name: "GU",
             detail: "セール品だったコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "2",
@@ -113,7 +113,7 @@ Item.create!(
             name: "赤のスニーカー",
             shop_name: "GU",
             detail: "スタイルがよく見える",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
@@ -121,7 +121,7 @@ Item.create!(
             name: "赤のワンピース",
             shop_name: "GU",
             detail: "4000円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
@@ -129,7 +129,7 @@ Item.create!(
             name: "赤のベレー帽",
             shop_name: "GU",
             detail: "990円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "1",
@@ -137,7 +137,7 @@ Item.create!(
             name: "青のジャケット",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "1",
@@ -145,7 +145,7 @@ Item.create!(
             name: "青のダウン",
             shop_name: "wego",
             detail: "柄が可愛い",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
@@ -153,7 +153,7 @@ Item.create!(
             name: "青のパーカー",
             shop_name: "wego",
             detail: "800円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "5",
@@ -161,7 +161,7 @@ Item.create!(
             name: "青のTシャツ",
             shop_name: "wego",
             detail: "セール品だったコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "2",
@@ -169,7 +169,7 @@ Item.create!(
             name: "青のネクタイ",
             shop_name: "wego",
             detail: "スタイルがよく見える",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "3",
@@ -177,7 +177,7 @@ Item.create!(
             name: "青のスカート",
             shop_name: "GU",
             detail: "4000円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
@@ -185,7 +185,7 @@ Item.create!(
             name: "青のジーンズ",
             shop_name: "wego",
             detail: "990円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "4",
@@ -193,7 +193,7 @@ Item.create!(
             name: "黄色のパーカー",
             shop_name: "mac",
             detail: "お気に入りです",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "3",
@@ -201,7 +201,7 @@ Item.create!(
             name: "黄色のダウン",
             shop_name: "nike",
             detail: "6990円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "2",
@@ -209,7 +209,7 @@ Item.create!(
             name: "黄色のジャケット",
             shop_name: "GU",
             detail: "1290円でセール中で安かったー",
-            private: "false"
+            private: "true"
         },
          {
             genre_id: "1",
@@ -217,7 +217,7 @@ Item.create!(
             name: "黄色のシャツ",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
@@ -225,7 +225,7 @@ Item.create!(
             name: "黄色のボトムス",
             shop_name: "GU",
             detail: "3000円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
@@ -233,7 +233,7 @@ Item.create!(
             name: "黄色のワンピース",
             shop_name: "GU",
             detail: "800円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "4",
@@ -241,108 +241,108 @@ Item.create!(
             name: "黄色のヒール",
             shop_name: "GU",
             detail: "セール品だったコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
             user_id: "5",
-            name: "テラコッタ柄のボトムス",
+            name: "ピンクのコート",
             shop_name: "GU",
             detail: "スタイルがよく見える",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
             user_id: "4",
-            name: "黒のスニーカー",
+            name: "ピンクのニット",
             shop_name: "GU",
             detail: "4000円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "3",
             user_id: "2",
-            name: "赤のベレー帽",
+            name: "ピンクのニット帽子",
             shop_name: "GU",
             detail: "990円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "1",
             user_id: "1",
-            name: "赤のスニーカー",
+            name: "ピンクのニット",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "1",
             user_id: "2",
-            name: "青のワンピース",
+            name: "ピンクのボトムス",
             shop_name: "wego",
             detail: "柄が可愛い",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
             user_id: "3",
-            name: "黄色のドレス",
+            name: "ピンクのスカート",
             shop_name: "wego",
             detail: "800円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "5",
             user_id: "4",
-            name: "赤のジャケット",
+            name: "ピンクのシューズ",
             shop_name: "wego",
             detail: "セール品だったコスパ最高です",
-            private: "ture"
+            private: "false"
         },
         {
             genre_id: "2",
             user_id: "5",
-            name: "豹柄のボトムス",
+            name: "花柄のニット",
             shop_name: "wego",
             detail: "スタイルがよく見える",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
             user_id: "4",
-            name: "黒のスニーカー",
+            name: "花柄のワンピース",
             shop_name: "GU",
             detail: "4000円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
             user_id: "2",
-            name: "赤のベレー帽",
+            name: "花柄のスカート",
             shop_name: "wego",
             detail: "990円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "4",
             user_id: "3",
-            name: "黒のベレー帽",
+            name: "花柄のボトムス",
             shop_name: "mac",
             detail: "お気に入りです",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "3",
             user_id: "4",
-            name: "ナイキのスニーカー",
+            name: "花柄のシャツ",
             shop_name: "nike",
             detail: "6990円でコスパ最高です",
-            private: "ture"
+            private: "true"
         },
         {
             genre_id: "2",
             user_id: "1",
-            name: "ピンクのワンピース",
+            name: "花柄のくつ",
             shop_name: "GU",
             detail: "1290円でセール中で安かったー",
             private: "false"

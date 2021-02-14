@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
    resources :coordinetes, only: [:index, :create, :edit, :update, :destroy]
+   resources :recommendations, only: [:index]
 end
