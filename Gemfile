@@ -70,9 +70,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'dotenv-rails'
 gem 'whenever', require: false
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
 
 
 # gem "impressionist"
