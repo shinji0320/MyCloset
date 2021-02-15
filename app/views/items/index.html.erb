@@ -26,40 +26,67 @@
     <% end %>
   </div>
 
-  <div class="row">
+  <div class="row my-3">
     <div class="col-4">
-      <h4 class="m-3">いいね数ランキング</h4>
-      <% if @all_favorite_ranks.count == 0 %>
-        <p>ランキングがありません</p>
-      <% else %>
-        <% @all_favorite_ranks.each.with_index(1) do |item, i| %>
-          <p class="m-4">第<%= i %>位  <%=link_to item_path(item) do %><%= item.name %><% end %></p>
-        <% end %>
-      <% end %>
+      <div class="card border-secondary mb-3" style="max-width: 22rem;">
+       <div class="card-header text-center">いいね数ランキング</div>
+        <div class="card-body text-secondary">
+          <% if @all_favorite_ranks.count == 0 %>
+            <p class="card-text">ランキングがありません</p>
+          <% else %>
+            <% @all_favorite_ranks.each.with_index(1) do |item, i| %>
+              <p class="card-text m-4">
+                第<%= i %>位
+                <%= item.favorites.count %>件
+                <%=link_to item_path(item) do %>
+                  <%= item.name%>
+                <% end %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
+    <div class="col-4">
+      <div class="card border-secondary mb-3" style="max-width: 22rem;">
+       <div class="card-header text-center">コメントランキング</div>
+        <div class="card-body text-secondary">
+          <% if @all_comment_ranks.count == 0 %>
+              <p class="card-text">ランキングがありません</p>
+          <% else %>
+            <% @all_comment_ranks.each.with_index(1) do |item, i| %>
+              <p class="m-4">
+                第<%= i %>位
+                <%= item.item_comments.count %>件
+                <%=link_to item_path(item) do %>
+                  <%= item.name %>
+                <% end %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card border-secondary mb-3" style="max-width: 22rem;">
+       <div class="card-header text-center">ジャンルランキング</div>
+        <div class="card-body text-secondary">
+          <% if @all_genre_ranks.count == 0 %>
+              <p>ランキングがありません</p>
+          <% else %>
+            <% @all_genre_ranks.each.with_index(1) do |item, i| %>
+              <p class="m-4">
+                第<%= i %>位
+                <%= item.genre.name %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+   </div>
 
-    <div class="col-4">
-      <h4 class="m-3">コメントランキング</h4>
-      <% if @all_comment_ranks.count == 0 %>
-        <p>ランキングがありません</p>
-      <% else %>
-        <% @all_comment_ranks.each.with_index(1) do |item, i| %>
-          <p class="m-4">第<%= i %>位  <%=link_to item_path(item) do %><%= item.name %><% end %></p>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="col-4">
-      <h4 class="m-3">ジャンルランキング</h4>
-      <% if @all_genre_ranks.count == 0 %>
-        <p>ランキングがありません</p>
-      <% else %>
-        <% @all_genre_ranks.each.with_index(1) do |item, i| %>
-          <p class="m-4">第<%= i %>位 <%= item.genre.name %></p>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <p>アイテム一覧</p>
   <div class="row">
    <% @items.each do |item| %>
     <div class="col-4">
@@ -84,11 +111,5 @@
     </div>
    <% end %>
   </div>
-  <div class="mx-auto"><%= paginate @items %></div>
+  <div class="mx-auto"><%= paginate @items%></div>
 </div>
-
-
-
-
-
-

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "mt-2" %>
+    <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %>
 
     <div class="col">
       <h5 class="m-5">プロフィールの編集</h5>
@@ -11,7 +11,7 @@
          <%= f.text_field :name, class: "form-control m-3" %>
         </div>
         <div class="form-group">
-          <%= f.label :自己紹介文 %>
+          <%= f.label :紹介文 %>
           <%= f.text_area :introduction, class: "form-control m-3" %>
         </div>
         <div class="form-group">

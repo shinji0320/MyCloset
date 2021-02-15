@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-       <div class="row">
-        <div class="col-2"><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "rounded-circle" %></div>
-        <div class="col text-center">名前　:　<%= @user.name %></div>
-       </div>
-       <div class="row">
+        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %><br >
+       <div class="row m-4">
+         <div class="col-5 textcenter">名前　:　<%= @user.name %></div>
          <div class="col-2 text-center">フォロー中　:　<%= link_to @user.followings.count, user_followings_path(@user) %></div>
          <div class="col-2 text-center">フォロワー　:　<%= link_to @user.followers.count, user_followers_path(@user), class: "follow-count" %></div>
          <div class="col-3 follow"><%= render 'relationships/follow_button', user: @user %></div>
@@ -14,11 +12,11 @@
          紹介文　:　<%= @user.introduction %>
        </div>
        <% if current_user == @user %>
-        <div class="text-right"><%= link_to "コーディネート", coordinetes_path, class:"btn btn-primary m-5" %></div>
+        <div class="text-right"><%= link_to "コーディネート", coordinetes_path, class:"btn btn-info m-5" %></div>
        <% end%>
 
       <section>
-        <h5>My Items</h5>
+        <h5>おすすめ服</h5>
 
         <% @items.each do |item| %>
           <%= link_to item_path(item) do%>
