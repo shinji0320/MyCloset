@@ -21,7 +21,7 @@
              <% if user_signed_in? %>
                <li><%= link_to 'MyCloset                ', user_path(current_user.id), class: "fas fa-home nav-link text-white p-3" %></li>
                <li><%= link_to '投稿一覧                ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
-               <li><%= link_to '投稿フォーム            ', new_item_path, class: "fas fa-shopping-cart nav-link text-white p-3" %></li>
+               <li><%= link_to '投稿フォーム            ', new_item_path, class: "fas fa-plus nav-link text-white p-3" %></li>
                <li><%= link_to 'log_out                 ', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white p-3" %></li>
              <% else %>
                <li><%= link_to 'about                   ', homes_about_path, class: "fas fa-paper-plane nav-link text-white p-3" %></li>
@@ -37,9 +37,6 @@
       <p id="notice"><%= notice %></p>
       <div class="main pb-3">
         <%= render 'searchs/form' %>
-           <% if user_signed_in? %>
-            <p class="text-right m-5"><%= link_to user_path(current_user) do %><%= current_user.name %>様<% end %></p>
-          <% end %>
         <%= yield %>
       </div>
     <div class="footer py-3">

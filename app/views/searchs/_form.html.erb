@@ -1,10 +1,19 @@
 <div class="search-form m-4 text-right">
   <% if user_signed_in? %>
-    <%= form_with url: search_path, method: :get, local:true do |f| %>
-      <%= text_field_tag "content" %>
-      <%= select_tag "model", options_for_select({ "アイテム" => "item", "ユーザー" => "user" }) %>
-      <%= select_tag "method", options_for_select({ "部分一致" => "partial", "完全一致" => "perfect" }) %>
-      <%= submit_tag "検索" %>
-    <% end %>
-<% end %>
+    <p>
+      ようこそ
+        <%= link_to user_path(current_user) do %>
+          <%= current_user.name %>
+        <% end %>
+      様
+    </p>
+    <p>
+      <%= form_with url: search_path, method: :get, local:true do |f| %>
+        <%= text_field_tag "content" %>
+        <%= select_tag "model", options_for_select({ "アイテム" => "item", "ユーザー" => "user" }) %>
+        <%= select_tag "method", options_for_select({ "部分一致" => "partial", "完全一致" => "perfect" }) %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </p>
+  <% end %>
 </div>
