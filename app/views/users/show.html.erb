@@ -1,12 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %><br >
+      <div class="row">
+        <div class="col-10">
+          <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %>
+        </div>
+        <div class="col">
+          <div class="follow mt-5"><%= render 'relationships/follow_button', user: @user %></div>
+        </div>
+      </div>
        <div class="row m-4">
          <div class="col-5 textcenter">名前　:　<%= @user.name %></div>
-         <div class="col-2 text-center">フォロー中　:　<%= link_to @user.followings.count, user_followings_path(@user) %></div>
-         <div class="col-2 text-center">フォロワー　:　<%= link_to @user.followers.count, user_followers_path(@user), class: "follow-count" %></div>
-         <div class="col-3 follow"><%= render 'relationships/follow_button', user: @user %></div>
+         <div class="col-3 text-center">フォロー中　:　<%= link_to @user.followings.count, user_followings_path(@user) %></div>
+         <div class="col-3 text-center">フォロワー　:　<%= link_to @user.followers.count, user_followers_path(@user), class: "follow-count" %></div>
        </div>
        <div class="row m-4">
          紹介文　:　<%= @user.introduction %>

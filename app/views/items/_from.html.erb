@@ -1,7 +1,13 @@
 <%= form_with model: item, local:true do |f| %>
   <div class="form-group">
-    <%= f.label :ジャンル %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    <div class="row">
+      <div class="col-6">
+        <%= f.label :ジャンル %>
+      </div>
+      <div class="col">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
@@ -25,8 +31,14 @@
   </div>
 
   <div class="form-group">
-    <%= f.radio_button :private, false %><%= f.label :private, "非公開", class: "text-active" %>
-    <%= f.radio_button :private, true %><%= f.label :private, "公開", class: "text-invalid" %>
+    <div class="row m-3">
+      <div class="col-6">
+        <%= f.radio_button :private, false %><%= f.label :private, "非公開", class: "text-active" %>
+      </div>
+      <div class="col-6">
+        <%= f.radio_button :private, true %><%= f.label :private, "公開", class: "text-invalid" %>
+      </div>
+    </div>
   </div>
 
   <div class="form-group">

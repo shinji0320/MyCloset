@@ -37,6 +37,9 @@
       <p id="notice"><%= notice %></p>
       <div class="main pb-3">
         <%= render 'searchs/form' %>
+           <% if user_signed_in? %>
+            <p class="text-right m-5"><%= link_to user_path(current_user) do %><%= current_user.name %>様<% end %></p>
+          <% end %>
         <%= yield %>
       </div>
     <div class="footer py-3">

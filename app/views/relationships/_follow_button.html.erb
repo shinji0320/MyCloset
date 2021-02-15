@@ -6,6 +6,6 @@
       <%= link_to 'Follow', user_relationships_path(user.id), class: 'btn btn-success', method: :post, remote: true %>
     <% end %>
   <% else %>
-    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+    <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-lg fas fa-user-cog" %>
   <% end %>
 </div>
