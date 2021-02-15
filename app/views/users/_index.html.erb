@@ -9,11 +9,18 @@
   <tbody>
    <% users.each do |user| %>
     <tr>
-     <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "rounded-circle" %></td>
-     <td><%= user.name %></td>
+     <td>
+       <%= link_to user_path(user) do %>
+         <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "100x100", class: "rounded-circle" %>
+       <% end %>
+      </td>
+     <td>
+       <%= link_to user_path(user) do %>
+         <%=user.name %>
+       <% end %>
+      </td>
      <td>フォロー数: <%= user.followings.count%></td>
      <td>フォロワー数: <%= user.followers.count%></td>
-     <td class="follow m-3"><%= render 'relationships/follow_button', user: user %></td>
     </tr>
    <% end %>
   </tbody>

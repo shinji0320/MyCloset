@@ -1,27 +1,29 @@
 class RelationshipsController < ApplicationController
+  before_action :ensure_user, only: [:create, :destroy, :followings, :followers]
   
   def create
-    @user = User.find(params[:user_id])
     following = current_user.follow(@user)
     following.save
-    flash[:success] = 'フォローしました'
-
+    flash[:success] = "フォローしました"
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     following = current_user.unfollow(@user)
     following.destroy
-    flash[:success] = 'フォローを解除しました'
+    flash[:success] = "フォローを解除しました"
   end
 
   def followings
-    user = User.find(params[:user_id])
-    @users = user.followings
+    @users = @user.followings
   end
 
   def followers
-    user = User.find(params[:user_id])
-    @users = user.followers
+    @users = @user.followers
+  end
+  
+  private
+
+  def ensure_user
+    @user = User.find(params[:user_id])
   end
 end

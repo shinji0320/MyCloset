@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :ensure_item, only: [:show, :edit, :update, :destroy]
   before_action :ranks, only: [:index]
-  before_action :recommendations, only: [:index]
 
   def new
     @item = Item.new
@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.where(private: "true").page(params[:page]).reverse_order
     @item_comment = ItemComment.new
+    @recommendations = Recommendation.all
   end
 
   def create
@@ -22,19 +23,16 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @item_comment = ItemComment.new
   end
 
   def edit
-    @item = Item.find(params[:id])
     if @item.user != current_user
       redirect_to items_path
     end
   end
   
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item), notice: '編集できました。'
     else
@@ -43,7 +41,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_path
   end
@@ -56,12 +53,12 @@ class ItemsController < ApplicationController
     @all_genre_ranks = Item.find(Item.group(:genre_id).order('count(genre_id) desc').limit(3).pluck(:genre_id))
   end
 
-  def recommendations
-      @recommendations = Recommendation.all
-  end
-
   def item_params
     params.require(:item).permit(:genre_id, :name, :shop_name, :detail, :image, :private)
     # score
+  end
+  
+  def ensure_item
+    @item = Item.find(params[:id])
   end
 end

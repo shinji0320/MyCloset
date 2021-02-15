@@ -1,4 +1,5 @@
 class CoordinetesController < ApplicationController
+  before_action :ensure_coordinete, only: [:edit, :update, :destroy]
 
   def index
     @coordinetes = Coordinete.all
@@ -19,20 +20,18 @@ class CoordinetesController < ApplicationController
   end
 
   def edit
-    @coordinete = Coordinete.find(params[:id])
   end
 
   def update
-    @coordinete = Coordinete.find(params[:id])
     if @coordinete.update(coordinete_params)
-      redirect_to coordinetes_path, notice: '編集できました。'
+       flash[:notice] = "コーディネートを編集しました"
+       redirect_to coordinetes_path
     else
       render :edit
     end
   end
 
   def destroy
-    @coordinete = Coordinete.find(params[:id])
     @coordinete.destroy
     redirect_to coordinetes_path
   end
@@ -45,5 +44,9 @@ class CoordinetesController < ApplicationController
 
   def item_ids
     params[:coordinete][:item_ids].values.map(&:to_i)
+  end
+
+  def ensure_coordinete
+    @coordinete = Coordinete.find(params[:id])
   end
 end
