@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :ensure_user, only: [:show, :edit, :update]
 
   def show
+    if @user != current_user
+      @items = Item.where(private: "true")
+    else
+      @items = @user.items
+    end
   end
 
   def edit

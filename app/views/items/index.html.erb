@@ -1,15 +1,30 @@
 <div class="container">
+  <p>おすすめのアイテム(１分ごとにランダムで表示します)</p>
   <div class="row">
-    <p class="col-3">おすすめのアイテム</p>
-      <% @recommendations.each do |recommendation| %>
-        <div class="col-3">
-          <%= link_to item_path(recommendation.item) do %>
-            <%= recommendation.item.name %>
-          <% end %>
+    <% @recommendations.each do |recommendation| %>
+      <% @item = recommendation.item %>
+      <div class="col-4">
+        <div class="card my-2" style="width: 22rem;">
+            <%= attachment_image_tag @item, :image, :fill, 335, 335, fallback: "no_image.jpg", :size => '335x335', class: "m-2" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= @item.name %></h5>
+            <small class="text-muted"><%= @item.genre.name %></small>
+            <p class="card-text"><%= @item.shop_name %></p>
+            <p><%= link_to "詳細をみる", item_path(@item), class: "btn btn-primary" %></p>
+            <div class="row">
+              <div class="col-6"><i class="far fa-comment-dots"></i><%= "#{@item.item_comments.count}"%></div>
+              <%= render 'items/favorites', item: @item %>
+            </div>
+            <p>
+              <%= link_to user_path(@item.user) do %>
+                Name"<%= @item.user.name %>"
+              <% end %>
+            </p>
+          </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
-
 
   <div class="row">
     <div class="col-4">
@@ -49,7 +64,7 @@
    <% @items.each do |item| %>
     <div class="col-4">
       <div class="card my-2" style="width: 22rem;">
-         <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "m-2" %>
+         <%= attachment_image_tag item, :image, :fill, 335, 335, fallback: "no_image.jpg", :size => '335x335', class: "m-2" %>
         <div class="card-body">
           <h5 class="card-title"><%= item.name %></h5>
           <small class="text-muted"><%= item.genre.name %></small>

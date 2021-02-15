@@ -19,9 +19,10 @@
 
       <section>
         <h5>My Items</h5>
-        <% @user.items.each do |item| %>
+
+        <% @items.each do |item| %>
           <%= link_to item_path(item) do%>
-            <%= attachment_image_tag item, :image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "150x150", class: "m-1 rounded-circle" %>
+            <%= attachment_image_tag item, :image, format: 'jpeg', fallback: "no_image.jpg", size: "150x150", class: "m-1" %>
           <% end %>
         <% end %>
       </section>

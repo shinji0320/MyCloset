@@ -1,7 +1,7 @@
 class Batch::DataReset
   def self.data_reset
     Recommendation.destroy_all
-    Item.all.shuffle.take(3).each do |item|
+    Item.where(private: "true").shuffle.take(3).each do |item|
       Recommendation.create(recommendation_params(item))
     end
     p "おすすめの商品"
