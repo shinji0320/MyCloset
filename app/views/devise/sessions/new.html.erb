@@ -1,29 +1,32 @@
-<div class="container">
+<div class="container mx-auto">
   <div class="row">
-    <div class="col">
-      <h2>ログイン</h2>
+    <div class="col-4">
+      <h2>ログインページ</h2>
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <div class="field">
-          <%= f.label :メールアドレス %><br />
+        <div class="fiel m-4">
+          <%= f.label :"メールアドレス(＠必要です)" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
         </div>
 
-        <div class="field">
-          <%= f.label :パスワード %><br />
+        <div class="field m-4">
+          <%= f.label :"パスワード" %><br />
           <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
         </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="field">
+          <div class="field m-4">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
 
-        <div class="actions">
-          <%= f.submit "ログインする" %>
+        <div class="actions m-4">
+          <%= f.submit "ログイン", class: 'btn btn-success' %>
         </div>
       <% end %>
+      <div class="m-4">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
