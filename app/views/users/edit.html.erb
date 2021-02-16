@@ -1,6 +1,6 @@
 <div class="container">
+    <%= render 'layouts/errors', obj: @user %>
   <div class="row">
-
     <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %>
 
     <div class="col">

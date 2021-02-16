@@ -1,13 +1,6 @@
 <div class="search-form m-4 text-right">
   <% if user_signed_in? %>
     <p>
-      ようこそ
-        <%= link_to user_path(current_user) do %>
-          <%= current_user.name %>
-        <% end %>
-      様
-    </p>
-    <p>
       <%= form_with url: search_path, method: :get, local:true do |f| %>
         <%= text_field_tag "content" %>
         <%= select_tag "model", options_for_select({ "アイテム" => "item", "ユーザー" => "user" }) %>
@@ -15,5 +8,13 @@
         <%= submit_tag "検索" %>
       <% end %>
     </p>
+    <p>
+      ようこそ
+        <%= link_to user_path(current_user) do %>
+          <%= current_user.name %>
+        <% end %>
+      様
+    </p>
+    <p><%= link_to "みんなの投稿一覧", items_path %></p>
   <% end %>
 </div>
