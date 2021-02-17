@@ -39,7 +39,6 @@ plugin :tmp_restart
 
 bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 rails_root = Dir.pwd
-# 本番環境のみデーモン起動
 if Rails.env.production?
   pidfile File.join(rails_root, 'tmp', 'pids', 'puma.pid')
   state_path File.join(rails_root, 'tmp', 'pids', 'puma.state')
@@ -48,6 +47,5 @@ if Rails.env.production?
     File.join(rails_root, 'log', 'puma-error.log'),
     true
   )
-  # デーモン
   daemonize
 end

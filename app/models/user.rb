@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :item_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  # フォロー機能
+  
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'

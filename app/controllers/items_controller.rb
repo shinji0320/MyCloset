@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
       redirect_to items_path
     end
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to item_path(@item), notice: '編集できました。'
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:genre_id, :name, :shop_name, :detail, :image, :private)
     # score
   end
-  
+
   def ensure_item
     @item = Item.find(params[:id])
   end
