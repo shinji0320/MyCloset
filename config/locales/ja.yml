@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      item: アイテム
+    attributes:
+      item:
+        name: 商品名
+        shop_name: ブランド名
+        detail: 説明
+
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前

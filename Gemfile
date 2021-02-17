@@ -71,8 +71,5 @@ gem 'dotenv-rails'
 gem 'whenever', require: false
 gem 'mysql2'
 gem 'listen', '>= 3.0.5', '< 3.2'
-
-# gem "impressionist"
-# gem "simple_calendar"
-# gem "geocoder"
+gem 'rails-i18n'
 
