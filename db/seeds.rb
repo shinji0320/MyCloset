@@ -70,6 +70,18 @@ User.create!(
             email: "taco@example.com",
             password: "111111",
             introduction: "お店経営してます。[taco_shop]"
+        },
+        {
+            name: "ねねちゃん",
+            email: "nene@example.com",
+            password: "111111",
+            introduction: "可愛い系の洋服が好きです"
+        },
+        {
+            name: "いくらちゃん",
+            email: "ikura@example.com",
+            password: "111111",
+            introduction: "カジュアルな服装が好きです。合わせやすい服を探してます"
         }
     ]
 )
@@ -88,7 +100,7 @@ Item.create!(
             user_id: "2",
             name: "赤のダウン",
             shop_name: "GU",
-            detail: "3000円でコスパ最高です",
+            detail: "5000円なのにとても暖かいので買った方がいいです",
             private: "true"
         },
         {
@@ -96,7 +108,7 @@ Item.create!(
             user_id: "3",
             name: "赤のボトムス",
             shop_name: "GU",
-            detail: "800円でコスパ最高です",
+            detail: "安くて買ったけど合わせる服がない",
             private: "false"
         },
         {
@@ -120,7 +132,7 @@ Item.create!(
             user_id: "4",
             name: "赤のワンピース",
             shop_name: "GU",
-            detail: "4000円でコスパ最高です",
+            detail: "近所の散歩する時に楽で便利",
             private: "true"
         },
         {
@@ -136,7 +148,7 @@ Item.create!(
             user_id: "1",
             name: "青のジャケット",
             shop_name: "GU",
-            detail: "1990円でコスパ最高です",
+            detail: "全然寒くなくてとてもいい",
             private: "false"
         },
         {
@@ -152,7 +164,7 @@ Item.create!(
             user_id: "3",
             name: "青のパーカー",
             shop_name: "wego",
-            detail: "800円でコスパ最高です",
+            detail: "合わせやすい一枚あるだけで着回しが効く",
             private: "true"
         },
         {
@@ -160,7 +172,7 @@ Item.create!(
             user_id: "4",
             name: "青のTシャツ",
             shop_name: "wego",
-            detail: "セール品だったコスパ最高です",
+            detail: "夏はずっと愛用中",
             private: "false"
         },
         {
@@ -168,7 +180,7 @@ Item.create!(
             user_id: "5",
             name: "青のネクタイ",
             shop_name: "wego",
-            detail: "スタイルがよく見える",
+            detail: "とてもお気に入り",
             private: "false"
         },
         {
@@ -176,7 +188,7 @@ Item.create!(
             user_id: "4",
             name: "青のスカート",
             shop_name: "GU",
-            detail: "4000円でコスパ最高です",
+            detail: "合わせやすくてとてもいい",
             private: "true"
         },
         {
@@ -200,7 +212,7 @@ Item.create!(
             user_id: "4",
             name: "黄色のダウン",
             shop_name: "nike",
-            detail: "6990円でコスパ最高です",
+            detail: "このマークが可愛い",
             private: "false"
         },
         {
@@ -216,7 +228,7 @@ Item.create!(
             user_id: "1",
             name: "黄色のシャツ",
             shop_name: "GU",
-            detail: "1990円でコスパ最高です",
+            detail: "大阪にいった時に買いました",
             private: "true"
         },
         {
@@ -224,7 +236,7 @@ Item.create!(
             user_id: "2",
             name: "黄色のボトムス",
             shop_name: "GU",
-            detail: "3000円でコスパ最高です",
+            detail: "新宿限定らしいです",
             private: "true"
         },
         {
@@ -232,7 +244,7 @@ Item.create!(
             user_id: "3",
             name: "黄色のワンピース",
             shop_name: "GU",
-            detail: "800円でコスパ最高です",
+            detail: "一つあるだけで全然違う",
             private: "true"
         },
         {
@@ -240,7 +252,7 @@ Item.create!(
             user_id: "4",
             name: "黄色のヒール",
             shop_name: "GU",
-            detail: "セール品だったコスパ最高です",
+            detail: "履きやすくて三足も買っちゃった",
             private: "true"
         },
         {
@@ -248,7 +260,7 @@ Item.create!(
             user_id: "5",
             name: "ピンクのコート",
             shop_name: "GU",
-            detail: "スタイルがよく見える",
+            detail: "めっちゃ可愛い",
             private: "true"
         },
         {
@@ -288,23 +300,23 @@ Item.create!(
             user_id: "3",
             name: "ピンクのスカート",
             shop_name: "wego",
-            detail: "800円でコスパ最高です",
+            detail: "めちゃ可愛いおすすめ",
             private: "true"
         },
         {
             genre_id: "5",
             user_id: "4",
             name: "ピンクのシューズ",
-            shop_name: "wego",
-            detail: "セール品だったコスパ最高です",
+            shop_name: "abc-mart",
+            detail: "今、セール中で安いですよ",
             private: "false"
         },
         {
             genre_id: "2",
             user_id: "5",
             name: "花柄のニット",
-            shop_name: "wego",
-            detail: "スタイルがよく見える",
+            shop_name: "Deco",
+            detail: "古着屋さんで買いました",
             private: "true"
         },
         {
@@ -312,7 +324,7 @@ Item.create!(
             user_id: "4",
             name: "花柄のワンピース",
             shop_name: "GU",
-            detail: "4000円でコスパ最高です",
+            detail: "1年前くらいに買いました",
             private: "true"
         },
         {
@@ -320,7 +332,7 @@ Item.create!(
             user_id: "2",
             name: "花柄のスカート",
             shop_name: "wego",
-            detail: "990円でコスパ最高です",
+            detail: "2年前くらい買いました",
             private: "true"
         },
         {
@@ -336,7 +348,7 @@ Item.create!(
             user_id: "4",
             name: "花柄のシャツ",
             shop_name: "nike",
-            detail: "6990円でコスパ最高です",
+            detail: "カーディガンと合わせるといい感じー",
             private: "true"
         },
         {
@@ -344,7 +356,7 @@ Item.create!(
             user_id: "1",
             name: "花柄のくつ",
             shop_name: "GU",
-            detail: "1290円でセール中で安かったー",
+            detail: "ワンピースに合わせるのがおすすめ",
             private: "false"
         }
     ]

@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col">
       <div class="row">
-        <div class="col-10">
+        <div class="col-3">
           <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no-image-icon.jpg", size: "120x120", class: "rounded-circle m-4" %>
         </div>
-        <div class="col">
+        <div class="col-8"><%= render 'layouts/weather_api'%></div>
+        <div class="col-1">
           <div class="follow mt-5"><%= render 'relationships/follow_button', user: @user %></div>
         </div>
       </div>

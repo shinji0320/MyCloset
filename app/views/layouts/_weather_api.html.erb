@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% if current_user.prefecture.empty? %>
+        <p>都道府県（県まで）登録すると天気予報表示できます</p>
+      <% else%>
+        <p><%= current_user.prefecture %>の天気です</p>
+        <p class="row" id="weather"></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  $(function () {
+  var API_KEY = '<%= ENV['OPEN_WEATHER_MAP_API'] %>';
+  var city = "<%= current_user.prefecture %>";
+  var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+  $.ajax({
+      url: url,
+      dataType: 'json',
+      type: 'GET',
+    })
+    .done(function (data) {
+      var insertHTML = '';
+      var cityName = data.city.name;
+      $('#city-name').html(cityName);
+      for (var i = 0; i <= 32; i = i + 8) {
+        insertHTML += buildHTML(data, i);
+      }
+      $('#weather').html(insertHTML);
+    })
+    .fail(function (data){
+      alert('都道府県が見つかりませんでした。県まで追加してください');
+    });
+  });
+   // 日本語化
+  function buildHTML(data, i) {
+    var Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
+    var date = new Date(data.list[i].dt_txt);
+    date.setHours(date.getHours() + 9);
+    var month = date.getMonth() + 1;
+    var day = month + '/' + date.getDate() + Week[date.getDay()];
+    var icon = data.list[i].weather[0].icon;
+    var html =
+      '<div class="weather-report">' +
+        '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+        '<span class="weather-date">' + day + "</span>" +
+        '<div class="weather-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
+        '<span class="weather-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
+      '</div>';
+    return html
+  }
+</script>

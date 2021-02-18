@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_024038) do
 
   create_table "coordinetes", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

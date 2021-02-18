@@ -1,6 +1,7 @@
 class CoordinetesController < ApplicationController
   before_action :ensure_coordinete, only: [:edit, :update, :destroy]
-
+  
+  
   def index
     @coordinetes = Coordinete.all
     @coordinete = Coordinete.new
