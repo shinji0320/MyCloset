@@ -1,6 +1,6 @@
 class RelationshipsController < ApplicationController
   before_action :ensure_user, only: [:create, :destroy, :followings, :followers]
-  
+
   def create
     following = current_user.follow(@user)
     following.save
@@ -20,7 +20,7 @@ class RelationshipsController < ApplicationController
   def followers
     @users = @user.followers
   end
-  
+
   private
 
   def ensure_user

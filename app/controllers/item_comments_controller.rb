@@ -1,5 +1,4 @@
 class ItemCommentsController < ApplicationController
-  
   def create
     @item = Item.find(params[:item_id])
     @item_comment = ItemComment.new(item_comment_params)
@@ -22,5 +21,4 @@ class ItemCommentsController < ApplicationController
   def item_comment_params
     params.require(:item_comment).permit(:comment)
   end
-
 end

@@ -10,5 +10,4 @@ class CoordinetesControllerTest < ActionDispatch::IntegrationTest
     get coordinetes_edit_url
     assert_response :success
   end
-
 end

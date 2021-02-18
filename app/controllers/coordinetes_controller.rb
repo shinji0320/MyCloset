@@ -12,8 +12,8 @@ class CoordinetesController < ApplicationController
       @coordinete.coordinete_tables.new(item_id: item_id)
     end
     if @coordinete.save
-       flash[:notice] = "コーディネートを追加しました"
-       redirect_to coordinetes_path
+      flash[:notice] = "コーディネートを追加しました"
+      redirect_to coordinetes_path
     else
       render :index
     end
@@ -24,8 +24,8 @@ class CoordinetesController < ApplicationController
 
   def update
     if @coordinete.update(coordinete_params)
-       flash[:notice] = "コーディネートを編集しました"
-       redirect_to coordinetes_path
+      flash[:notice] = "コーディネートを編集しました"
+      redirect_to coordinetes_path
     else
       render :edit
     end

@@ -5,14 +5,13 @@ class Batch::DataReset
       Recommendation.create(recommendation_params(item))
     end
     p "おすすめの商品"
-
   end
 
   def self.recommendation_params(item)
     {
       genre_id: item.genre_id,
       user_id: item.user_id,
-      item_id: item.id
+      item_id: item.id,
     }
   end
 end

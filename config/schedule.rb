@@ -24,13 +24,10 @@ rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
 
-
 every 1.minute do
-  begin
-    runner "Batch::DataReset.data_reset"
+  runner "Batch::DataReset.data_reset"
 
-  rescue => e
-    Rails.logger.error("aborted rails runner")
-    raise e
-  end
+rescue => e
+  Rails.logger.error("aborted rails runner")
+  raise e
 end

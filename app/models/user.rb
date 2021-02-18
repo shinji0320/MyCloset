@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :item_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -17,22 +17,20 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 2..20 }
   attachment :profile_image
 
-
   def follow(other_user)
     unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
+      relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship = relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
 
   def following?(other_user)
     followings.include?(other_user)
   end
-
 
   def self.search_for(content, method)
     if method == 'perfect'
