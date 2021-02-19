@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <% if current_user.prefecture.empty? %>
+      <% if current_user.prefecture.blank?%>
         <p>都道府県（県まで）登録すると天気予報表示できます</p>
       <% else%>
         <p><%= current_user.prefecture %>の天気です</p>

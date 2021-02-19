@@ -1,7 +1,7 @@
 class CoordinetesController < ApplicationController
   before_action :ensure_coordinete, only: [:edit, :update, :destroy]
-  
-  
+
+
   def index
     @coordinetes = Coordinete.all
     @coordinete = Coordinete.new
@@ -9,6 +9,7 @@ class CoordinetesController < ApplicationController
 
   def create
     @coordinete = Coordinete.new(coordinete_params)
+    @coordinete.user_id = current_user.id
     item_ids.each do |item_id|
       @coordinete.coordinete_tables.new(item_id: item_id)
     end

@@ -16,33 +16,37 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <%= form_with model: coordinete, url:coordinetes_path(coordinete), local:true do |f| %>
-            <div class="modal-body">
-              <div class="form-group">
-               <%= f.label :アイテム① %>
-               <%= f.collection_select 'item_ids[0]', Item.where(user_id: current_user.id), :id, :name %>
-             </div>
-
-             <div class="form-group">
-               <%= f.label :アイテム② %>
-               <%= f.collection_select 'item_ids[1]', Item.where(user_id: current_user.id), :id, :name %>
-             </div>
-
-             <div class="form-group">
-               <%= f.label :アイテム③ %>
-               <%= f.collection_select 'item_ids[2]', Item.where(user_id: current_user.id), :id, :name %>
-             </div>
-
-             <div class="form-group">
-              <%= f.label :コーディネート名 %>
-              <%= f.text_area :name, placeholder: "ここへ記入", class: "form-control-file" %>
-            </div>
-            <div class="modal-footer">
-              <div class="form-group">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= f.submit "追加", class: 'btn btn-success'%>
-              </div>
-            </div>
+          <% if current_user.items.empty? %>
+              <p>先にアイテムを登録しましょう</p>
+            <% else %>
+              <%= form_with model: coordinete, url:coordinetes_path(coordinete), local:true do |f| %>
+                <div class="modal-body">
+                  <div class="form-group">
+                   <%= f.label :アイテム① %>
+                   <%= f.collection_select 'item_ids[0]', Item.where(user_id: current_user.id), :id, :name %>
+                 </div>
+  
+                 <div class="form-group">
+                   <%= f.label :アイテム② %>
+                   <%= f.collection_select 'item_ids[1]', Item.where(user_id: current_user.id), :id, :name %>
+                 </div>
+  
+                 <div class="form-group">
+                   <%= f.label :アイテム③ %>
+                   <%= f.collection_select 'item_ids[2]', Item.where(user_id: current_user.id), :id, :name %>
+                 </div>
+  
+                 <div class="form-group">
+                  <%= f.label :コーディネート名 %>
+                  <%= f.text_area :name, placeholder: "ここへ記入", class: "form-control-file" %>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <%= f.submit "追加", class: 'btn btn-success'%>
+                  </div>
+                </div>
+              <% end %>
           <% end %>
           </div>
         </div>
