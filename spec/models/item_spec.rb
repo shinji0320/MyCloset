@@ -25,7 +25,7 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         item.name = Faker::Lorem.characters(number: 30)
         is_expected.to eq true
       end
-      it '30文字以下であること: 31文字は×' do
+       it '30文字以下であること: 31文字は×' do
         item.name = Faker::Lorem.characters(number: 31)
         is_expected.to eq false
       end
