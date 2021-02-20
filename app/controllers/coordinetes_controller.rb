@@ -8,6 +8,7 @@ class CoordinetesController < ApplicationController
   end
 
   def create
+    @coordinetes = Coordinete.all
     @coordinete = Coordinete.new(coordinete_params)
     @coordinete.user_id = current_user.id
     item_ids.each do |item_id|
@@ -35,6 +36,7 @@ class CoordinetesController < ApplicationController
 
   def destroy
     @coordinete.destroy
+    @coordinetes = Coordinete.all
     redirect_to coordinetes_path
   end
 

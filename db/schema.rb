@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_024038) do
   end
 
   create_table "coordinetes", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_02_14_024038) do
     t.text "comment"
     t.integer "user_id"
     t.integer "item_id"
-    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,10 +50,10 @@ ActiveRecord::Schema.define(version: 2021_02_14_024038) do
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "user_id"
-    t.string "name"
+    t.string "name", null: false
     t.text "image_id"
-    t.string "shop_name"
-    t.text "detail"
+    t.string "shop_name", null: false
+    t.text "detail", null: false
     t.boolean "private", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
