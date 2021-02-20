@@ -60,16 +60,40 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-  end
 
-  describe 'アソシエーションのテスト' do
-    context 'Userモデルとの関係' do
-      it 'N:1となっている' do
-        expect(Item.reflect_on_association(:user).macro).to eq :belongs_to
+    describe 'アソシエーションのテスト' do
+      context 'Userモデルとの関係' do
+        it 'N:1となっている' do
+          expect(Item.reflect_on_association(:user).macro).to eq :belongs_to
+        end
       end
-      it 'N:1となっている' do
-        expect(Item.reflect_on_association(:genre).macro).to eq :belongs_to
+      context 'Genreモデルとの関係' do
+        it 'N:1となっている' do
+          expect(Item.reflect_on_association(:genre).macro).to eq :belongs_to
+        end
+      end
+      context 'ItemCommentモデルとの関係' do
+        it '1:Nとなっている' do
+          expect(Item.reflect_on_association(:item_comments).macro).to eq :has_many
+        end
+      end
+      context 'Favoriteモデルとの関係' do
+        it '1:Nとなっている' do
+          expect(Item.reflect_on_association(:favorites).macro).to eq :has_many
+        end
+      end
+      context 'CoordineteTableモデルとの関係' do
+        it '1:Nとなっている' do
+          expect(Item.reflect_on_association(:coordinete_tables).macro).to eq :has_many
+        end
+      end
+      context 'Recommendationモデルとの関係' do
+        it '1:Nとなっている' do
+          expect(Item.reflect_on_association(:recommendations).macro).to eq :has_many
+        end
       end
     end
   end
 end
+
+
