@@ -24,7 +24,14 @@
 - クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
-
+ - ワイヤーフレーム
+ - https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/
+ - ER図
+ - https://app.diagrams.net/#G1lBR26INV4HS1SeG4oAv-bZJ90P1Uc3zT
+ - テーブル定義書
+ - お
+ - アプリケーション詳細設計
+ - お
 
 ## 機能一覧
 https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTnAcM/edit#gid=0
