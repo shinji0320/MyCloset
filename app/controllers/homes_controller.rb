@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   before_action :recommendations, only: [:top, :about]
-  before_action :ranks, only: [:top]
+  before_action :ranks, only: [:top, :about]
 
   def top
   end

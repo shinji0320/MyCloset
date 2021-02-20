@@ -8,16 +8,24 @@ class CoordinetesController < ApplicationController
   end
 
   def create
-    @coordinetes = Coordinete.all
+    
     @coordinete = Coordinete.new(coordinete_params)
     @coordinete.user_id = current_user.id
-    item_ids.each do |item_id|
-      @coordinete.coordinete_tables.new(item_id: item_id)
-    end
-    if @coordinete.save
-      flash[:notice] = "コーディネートを追加しました"
-      redirect_to coordinetes_path
+    if @coordinete.save #　&& coordinete.update_tables(item_ids: [1,2,34])を作成して保存
+      #  TODO:　コードの見通しがようなるようにリファクタリング
+      item_ids.each do |item_id|
+        @coordinete.coordinete_tables.new(item_id: item_id)
+        @coordinete.coordinete_tables
+      end
+      if @coordinete.save
+        flash[:notice] = "コーディネートを追加しました"
+        redirect_to coordinetes_path
+      else
+        @coordinetes = Coordinete.all
+        render :index
+      end
     else
+      @coordinetes = Coordinete.all
       render :index
     end
   end
