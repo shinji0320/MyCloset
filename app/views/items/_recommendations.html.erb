@@ -1,0 +1,26 @@
+<p>おすすめのアイテム(１分ごとにランダムで表示します)</p>
+  <div class="row">
+    <% recommendations.each do |recommendation| %>
+      <% item = recommendation.item %>
+      <div class="col-4">
+        <div class="card my-2" style="width: 22rem;">
+            <%= attachment_image_tag item, :image, fallback: "no_image.jpg", :size => '335x335', class: "m-2" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <small class="text-muted"><%= item.genre.name %></small>
+            <p class="card-text"><%= item.shop_name %></p>
+            <p><%= link_to "詳細をみる", item_path(item), class: "btn btn-primary" %></p>
+            <div class="row">
+              <div class="col-6"><i class="far fa-comment-dots"></i><%= "#{item.item_comments.count}"%></div>
+              <%= render 'items/favorites', item: item %>
+            </div>
+            <p>
+              <%= link_to user_path(item.user) do %>
+                Name"<%= item.user.name %>"
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

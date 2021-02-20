@@ -1,92 +1,7 @@
 <div class="container">
-   <%= render 'layouts/weather_api'%>
-  <p>おすすめのアイテム(１分ごとにランダムで表示します)</p>
-  <div class="row">
-    <% @recommendations.each do |recommendation| %>
-      <% @item = recommendation.item %>
-      <div class="col-4">
-        <div class="card my-2" style="width: 22rem;">
-            <%= attachment_image_tag @item, :image, fallback: "no_image.jpg", :size => '335x335', class: "m-2" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= @item.name %></h5>
-            <small class="text-muted"><%= @item.genre.name %></small>
-            <p class="card-text"><%= @item.shop_name %></p>
-            <p><%= link_to "詳細をみる", item_path(@item), class: "btn btn-primary" %></p>
-            <div class="row">
-              <div class="col-6"><i class="far fa-comment-dots"></i><%= "#{@item.item_comments.count}"%></div>
-              <%= render 'items/favorites', item: @item %>
-            </div>
-            <p>
-              <%= link_to user_path(@item.user) do %>
-                Name"<%= @item.user.name %>"
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="row my-4">
-    <div class="col-4">
-      <div class="card border-secondary mb-3" style="max-width: 22rem;">
-       <div class="card-header text-center">いいね数ランキング</div>
-        <div class="card-body text-secondary">
-          <% if @all_favorite_ranks.count == 0 %>
-            <p class="card-text">ランキングがありません</p>
-          <% else %>
-            <% @all_favorite_ranks.each.with_index(1) do |item, i| %>
-              <p class="card-text m-4">
-                第<%= i %>位
-                <%= item.favorites.count %>件
-                <%=link_to item_path(item) do %>
-                  <%= item.name%>
-                <% end %>
-              </p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card border-secondary mb-3" style="max-width: 22rem;">
-       <div class="card-header text-center">コメントランキング</div>
-        <div class="card-body text-secondary">
-          <% if @all_comment_ranks.count == 0 %>
-              <p class="card-text">ランキングがありません</p>
-          <% else %>
-            <% @all_comment_ranks.each.with_index(1) do |item, i| %>
-              <p class="m-4">
-                第<%= i %>位
-                <%= item.item_comments.count %>件
-                <%=link_to item_path(item) do %>
-                  <%= item.name %>
-                <% end %>
-              </p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 xs-12">
-      <div class="card border-secondary mb-3" style="max-width: 22rem;">
-       <div class="card-header text-center">ジャンルランキング</div>
-        <div class="card-body text-secondary">
-          <% if @all_genre_ranks.count == 0 %>
-              <p>ランキングがありません</p>
-          <% else %>
-            <% @all_genre_ranks.each.with_index(1) do |item, i| %>
-              <p class="m-4">
-                第<%= i %>位
-                <%= item.genre.name %>
-              </p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-   </div>
-
+  <%= render 'layouts/weather_api'%>
+  <%= render 'items/recommendations', recommendations: @recommendations %>
+  <%= render 'items/ranks', all_favorite_ranks: @all_favorite_ranks, all_comment_ranks: @all_comment_ranks, all_genre_ranks: @all_genre_ranks %>
   <p>アイテム一覧</p>
   <div class="row">
    <% @items.each do |item| %>
@@ -112,5 +27,5 @@
     </div>
    <% end %>
   </div>
-  <div class="mx-auto"><%= paginate @items%></div>
+  <div class="mx-auto"><%= paginate @items %></div>
 </div>
