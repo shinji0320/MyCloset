@@ -19,7 +19,6 @@ class HomesController < ApplicationController
     redirect_to items_path, notice: "ゲストユーザーとしてログインしました。"
   end
 
-
   private
 
   def recommendations

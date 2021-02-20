@@ -13,7 +13,7 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         item.name = ''
         is_expected.to eq false
       end
-        it '2文字以上であること: 2文字は〇' do
+      it '2文字以上であること: 2文字は〇' do
         item.name = Faker::Lorem.characters(number: 2)
         is_expected.to eq true
       end
@@ -21,11 +21,11 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         item.name = Faker::Lorem.characters(number: 1)
         is_expected.to eq false
       end
-        it '30文字以下であること: 30文字は〇' do
+      it '30文字以下であること: 30文字は〇' do
         item.name = Faker::Lorem.characters(number: 30)
         is_expected.to eq true
       end
-       it '30文字以下であること: 31文字は×' do
+      it '30文字以下であること: 31文字は×' do
         item.name = Faker::Lorem.characters(number: 31)
         is_expected.to eq false
       end
@@ -67,26 +67,31 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
           expect(Item.reflect_on_association(:user).macro).to eq :belongs_to
         end
       end
+
       context 'Genreモデルとの関係' do
         it 'N:1となっている' do
           expect(Item.reflect_on_association(:genre).macro).to eq :belongs_to
         end
       end
+
       context 'ItemCommentモデルとの関係' do
         it '1:Nとなっている' do
           expect(Item.reflect_on_association(:item_comments).macro).to eq :has_many
         end
       end
+
       context 'Favoriteモデルとの関係' do
         it '1:Nとなっている' do
           expect(Item.reflect_on_association(:favorites).macro).to eq :has_many
         end
       end
+
       context 'CoordineteTableモデルとの関係' do
         it '1:Nとなっている' do
           expect(Item.reflect_on_association(:coordinete_tables).macro).to eq :has_many
         end
       end
+
       context 'Recommendationモデルとの関係' do
         it '1:Nとなっている' do
           expect(Item.reflect_on_association(:recommendations).macro).to eq :has_many
@@ -95,5 +100,3 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
     end
   end
 end
-
-

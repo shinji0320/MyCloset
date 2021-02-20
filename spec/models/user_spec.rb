@@ -52,21 +52,25 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:items).macro).to eq :has_many
       end
     end
+
     context 'ItemCommentモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:item_comments).macro).to eq :has_many
       end
     end
+
     context 'Favoriteモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
+
     context 'Coordinetesモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:coordinetes).macro).to eq :has_many
       end
     end
+
     context 'Recommendationモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:recommendations).macro).to eq :has_many

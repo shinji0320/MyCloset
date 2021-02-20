@@ -1,17 +1,15 @@
 class CoordinetesController < ApplicationController
   before_action :ensure_coordinete, only: [:edit, :update, :destroy]
 
-
   def index
     @coordinetes = Coordinete.all
     @coordinete = Coordinete.new
   end
 
   def create
-    
     @coordinete = Coordinete.new(coordinete_params)
     @coordinete.user_id = current_user.id
-    if @coordinete.save #　&& coordinete.update_tables(item_ids: [1,2,34])を作成して保存
+    if @coordinete.save # 　&& coordinete.update_tables(item_ids: [1,2,34])を作成して保存
       #  TODO:　コードの見通しがようなるようにリファクタリング
       item_ids.each do |item_id|
         @coordinete.coordinete_tables.new(item_id: item_id)
