@@ -93,7 +93,9 @@ Item.create!(
             name: "赤のジャケット",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "true"
+            private: "true",
+            # image_id: "simple.jpg"
+            # image_id: open("./app/assets/images/simple.jpg")
         },
         {
             genre_id: "2",

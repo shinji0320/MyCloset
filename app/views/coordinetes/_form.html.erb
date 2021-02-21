@@ -25,17 +25,17 @@
                    <%= f.label :アイテム① %>
                    <%= f.collection_select 'item_ids[0]', Item.where(user_id: current_user.id), :id, :name %>
                  </div>
-  
+
                  <div class="form-group">
                    <%= f.label :アイテム② %>
                    <%= f.collection_select 'item_ids[1]', Item.where(user_id: current_user.id), :id, :name %>
                  </div>
-  
+
                  <div class="form-group">
                    <%= f.label :アイテム③ %>
                    <%= f.collection_select 'item_ids[2]', Item.where(user_id: current_user.id), :id, :name %>
                  </div>
-  
+
                  <div class="form-group">
                   <%= f.label :コーディネート名 %>
                   <%= f.text_area :name, placeholder: "ここへ記入", class: "form-control-file" %>

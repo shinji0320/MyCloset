@@ -55,38 +55,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_link book.title, href: book_path(book)
         expect(page).to have_link other_book.title, href: book_path(other_book)
       end
-      it '自分の投稿と他人の投稿のオピニオンが表示される' do
-        expect(page).to have_content book.body
-        expect(page).to have_content other_book.body
-      end
-    end
-
-    context 'サイドバーの確認' do
-      it '自分の名前と紹介文が表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content user.introduction
-      end
-      it '自分のユーザ編集画面へのリンクが存在する' do
-        expect(page).to have_link '', href: edit_user_path(user)
-      end
-      it '「New book」と表示される' do
-        expect(page).to have_content 'New book'
-      end
-      it 'titleフォームが表示される' do
-        expect(page).to have_field 'book[title]'
-      end
-      it 'titleフォームに値が入っていない' do
-        expect(find_field('book[title]').text).to be_blank
-      end
-      it 'opinionフォームが表示される' do
-        expect(page).to have_field 'book[body]'
-      end
-      it 'opinionフォームに値が入っていない' do
-        expect(find_field('book[body]').text).to be_blank
-      end
-      it 'Create Bookボタンが表示される' do
-        expect(page).to have_button 'Create Book'
-      end
     end
 
     context '投稿成功のテスト' do
@@ -134,33 +102,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
 
-    context 'サイドバーの確認' do
-      it '自分の名前と紹介文が表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content user.introduction
-      end
-      it '自分のユーザ編集画面へのリンクが存在する' do
-        expect(page).to have_link '', href: edit_user_path(user)
-      end
-      it '「New book」と表示される' do
-        expect(page).to have_content 'New book'
-      end
-      it 'titleフォームが表示される' do
-        expect(page).to have_field 'book[title]'
-      end
-      it 'titleフォームに値が入っていない' do
-        expect(find_field('book[title]').text).to be_blank
-      end
-      it 'opinionフォームが表示される' do
-        expect(page).to have_field 'book[body]'
-      end
-      it 'opinionフォームに値が入っていない' do
-        expect(find_field('book[body]').text).to be_blank
-      end
-      it 'Create Bookボタンが表示される' do
-        expect(page).to have_button 'Create Book'
-      end
-    end
 
     context '投稿成功のテスト' do
       before do
@@ -266,34 +207,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_link 'Show', href: user_path(other_user)
       end
     end
-
-    context 'サイドバーの確認' do
-      it '自分の名前と紹介文が表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content user.introduction
-      end
-      it '自分のユーザ編集画面へのリンクが存在する' do
-        expect(page).to have_link '', href: edit_user_path(user)
-      end
-      it '「New book」と表示される' do
-        expect(page).to have_content 'New book'
-      end
-      it 'titleフォームが表示される' do
-        expect(page).to have_field 'book[title]'
-      end
-      it 'titleフォームに値が入っていない' do
-        expect(find_field('book[title]').text).to be_blank
-      end
-      it 'opinionフォームが表示される' do
-        expect(page).to have_field 'book[body]'
-      end
-      it 'opinionフォームに値が入っていない' do
-        expect(find_field('book[body]').text).to be_blank
-      end
-      it 'Create Bookボタンが表示される' do
-        expect(page).to have_button 'Create Book'
-      end
-    end
   end
 
   describe '自分のユーザ詳細画面のテスト' do
@@ -318,34 +231,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).not_to have_link '', href: user_path(other_user)
         expect(page).not_to have_content other_book.title
         expect(page).not_to have_content other_book.body
-      end
-    end
-
-    context 'サイドバーの確認' do
-      it '自分の名前と紹介文が表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content user.introduction
-      end
-      it '自分のユーザ編集画面へのリンクが存在する' do
-        expect(page).to have_link '', href: edit_user_path(user)
-      end
-      it '「New book」と表示される' do
-        expect(page).to have_content 'New book'
-      end
-      it 'titleフォームが表示される' do
-        expect(page).to have_field 'book[title]'
-      end
-      it 'titleフォームに値が入っていない' do
-        expect(find_field('book[title]').text).to be_blank
-      end
-      it 'opinionフォームが表示される' do
-        expect(page).to have_field 'book[body]'
-      end
-      it 'opinionフォームに値が入っていない' do
-        expect(find_field('book[body]').text).to be_blank
-      end
-      it 'Create Bookボタンが表示される' do
-        expect(page).to have_button 'Create Book'
       end
     end
   end

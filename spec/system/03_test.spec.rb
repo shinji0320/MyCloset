@@ -415,33 +415,5 @@ describe '[STEP3] 仕上げのテスト' do
         is_expected.to have_selector '.fas.fa-sign-out-alt'
       end
     end
-
-    context 'サイドバー' do
-      subject { page }
-
-      before do
-        visit new_user_session_path
-        fill_in 'user[name]', with: user.name
-        fill_in 'user[password]', with: user.password
-        click_button 'Log in'
-      end
-
-      it 'ユーザ一覧画面でレンチアイコンが表示される' do
-        visit users_path
-        is_expected.to have_selector '.fas.fa-user-cog'
-      end
-      it 'ユーザ詳細画面でレンチアイコンが表示される' do
-        visit user_path(user)
-        is_expected.to have_selector '.fas.fa-user-cog'
-      end
-      it '投稿一覧画面でレンチアイコンが表示される' do
-        visit books_path
-        is_expected.to have_selector '.fas.fa-user-cog'
-      end
-      it '投稿詳細画面でレンチアイコンが表示される' do
-        visit book_path(book)
-        is_expected.to have_selector '.fas.fa-user-cog'
-      end
-    end
   end
 end

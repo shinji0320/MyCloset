@@ -18,6 +18,7 @@
           </div>
           <%= form_with model:[item, item_comment] do |f| %>
           <div class="modal-body">
+                <%= render 'layouts/errors', obj: item_comment %>
                <div class="form-group">
                 <%= f.label :コメント %>
                 <%= f.text_area :comment, placeholder: "ここへ記入", class: "form-control-file" %>
