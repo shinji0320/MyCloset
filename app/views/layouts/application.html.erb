@@ -19,15 +19,15 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
              <% if user_signed_in? %>
-               <li><%= link_to 'MyCloset                ', user_path(current_user.id), class: "fas fa-home nav-link text-white p-3" %></li>
-               <li><%= link_to '投稿一覧                ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
-               <li><%= link_to '投稿フォーム            ', new_item_path, class: "fas fa-plus nav-link text-white p-3" %></li>
-               <li><%= link_to 'log_out                 ', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white p-3" %></li>
+               <li><%= link_to 'MyCloset      ', user_path(current_user.id), class: "fas fa-home nav-link text-white p-3" %></li>
+               <li><%= link_to '投稿一覧      ', items_path, class: "fas fa-store-alt nav-link text-white p-3" %></li>
+               <li><%= link_to '投稿フォーム  ', new_item_path, class: "fas fa-plus nav-link text-white p-3" %></li>
+               <li><%= link_to 'log_out       ', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-white p-3" %></li>
              <% else %>
-               <li><%= link_to 'about                   ', homes_about_path, class: "fas fa-paper-plane nav-link text-white p-3" %></li>
-               <li><%= link_to 'sign_in                 ', new_user_registration_path, class: "fas fa-user-plus nav-link text-white p-3" %></li>
-               <li><%= link_to 'log_in                  ', new_user_session_path, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
-               <li><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
+               <li><%= link_to 'about         ', homes_about_path, class: "fas fa-paper-plane nav-link text-white p-3" %></li>
+               <li><%= link_to 'sign_up       ', new_user_registration_path, class: "fas fa-user-plus nav-link text-white p-3" %></li>
+               <li><%= link_to 'sign_in       ', new_user_session_path, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
+               <li><%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post, class: "fas fa-sign-in-alt nav-link text-white p-3" %></li>
              <% end %>
             </ul>
           </div>
