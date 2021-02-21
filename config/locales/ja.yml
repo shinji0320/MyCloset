@@ -2,24 +2,14 @@ ja:
   activerecord:
     models:
       item: アイテム
+      user: ユーザー
+      coordinete: コーディネート
     attributes:
       item:
         name: 商品名
         shop_name: ブランド名
         detail: 説明
-
-# ja:
-#   activerecord:
-#     models:
-#       user: ユーザー
-#     attributes:
-#       user:
-#         name: 名前
-
-ja:
-  activerecord:
-    models:
-      coordinete: コーディネート
-    attributes:
+      user:
+        name: 名前
       coordinete:
         name: 名前

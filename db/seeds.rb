@@ -94,8 +94,7 @@ Item.create!(
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
             private: "true",
-            # image_id: "simple.jpg"
-            # image_id: open("./app/assets/images/simple.jpg")
+            image: File.open("./app/assets/images/simple.jpg", 'r')
         },
         {
             genre_id: "2",
@@ -363,3 +362,4 @@ Item.create!(
         }
     ]
 )
+
