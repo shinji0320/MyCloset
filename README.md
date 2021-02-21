@@ -29,7 +29,7 @@
  - ER図
  - https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9
  - テーブル定義書
- - お
+ - https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing
  - アプリケーション詳細設計
  - お
 
