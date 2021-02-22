@@ -102,7 +102,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
 
-
     context '投稿成功のテスト' do
       before do
         fill_in 'book[title]', with: Faker::Lorem.characters(number: 5)
