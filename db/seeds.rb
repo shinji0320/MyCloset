@@ -93,8 +93,8 @@ Item.create!(
             name: "赤のジャケット",
             shop_name: "GU",
             detail: "1990円でコスパ最高です",
-            private: "true",
-            image: File.open("./app/assets/images/simple.jpg", 'r')
+            private: "true"
+            # image: File.open("./app/assets/images/simple.jpg", 'r')
         },
         {
             genre_id: "2",
@@ -222,9 +222,9 @@ Item.create!(
             name: "黄色のジャケット",
             shop_name: "GU",
             detail: "1290円でセール中で安かったー",
-            private: "true"
+            private: "true",
         },
-         {
+        {
             genre_id: "1",
             user_id: "1",
             name: "黄色のシャツ",
