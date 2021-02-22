@@ -69,8 +69,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
       end
-      it '「Sign up」と表示される' do
-        expect(page).to have_content 'Sign up'
+      it '「新規登録」と表示される' do
+        expect(page).to have_content '新規登録'
       end
       it 'nameフォームが表示される' do
         expect(page).to have_field 'user[name]'
@@ -78,14 +78,17 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'emailフォームが表示される' do
         expect(page).to have_field 'user[email]'
       end
+      it 'prefectureフォームが表示される' do
+        expect(page).to have_field 'user[prefecture]'
+      end
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'user[password]'
       end
       it 'password_confirmationフォームが表示される' do
         expect(page).to have_field 'user[password_confirmation]'
       end
-      it 'Sign upボタンが表示される' do
-        expect(page).to have_button 'Sign up'
+      it '登録ボタンが表示される' do
+        expect(page).to have_button '登録'
       end
     end
 
@@ -98,11 +101,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
 
       it '正しく新規登録される' do
-        expect { click_button 'Sign up' }.to change(User.all, :count).by(1)
+        expect { click_button '登録' }.to change(User.all, :count).by(1)
       end
-      it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
-        click_button 'Sign up'
-        expect(current_path).to eq '/users/' + User.last.id.to_s
+      it '新規登録後のリダイレクト先が、商品一覧ページになっている' do
+        click_button '登録'
+        expect(current_path).to eq '/items/'
       end
     end
   end
@@ -118,77 +121,47 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_in'
       end
-      it '「Log in」と表示される' do
-        expect(page).to have_content 'Log in'
+      it '「ログイン」と表示される' do
+        expect(page).to have_content 'ログイン'
       end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'user[name]'
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'user[email]'
       end
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'user[password]'
       end
-      it 'Sign upボタンが表示される' do
-        expect(page).to have_button 'Log in'
+      it 'ログインボタンが表示される' do
+        expect(page).to have_button 'ログイン'
       end
-      it 'emailフォームは表示されない' do
-        expect(page).not_to have_field 'user[email]'
+      it 'nameフォームは表示されない' do
+        expect(page).not_to have_field 'user[name]'
+      end
+      it 'prefectureフォームは表示されない' do
+        expect(page).not_to have_field 'user[prefecture]'
       end
     end
 
     context 'ログイン成功のテスト' do
       before do
-        fill_in 'user[name]', with: user.name
+        fill_in 'user[email]', with: user.email
         fill_in 'user[password]', with: user.password
-        click_button 'Log in'
+        click_button 'ログイン'
       end
 
       it 'ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている' do
-        expect(current_path).to eq '/users/' + user.id.to_s
+        expect(current_path).to eq '/items/'
       end
     end
 
     context 'ログイン失敗のテスト' do
       before do
-        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
-        click_button 'Log in'
+        click_button 'ログイン'
       end
 
       it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
         expect(current_path).to eq '/users/sign_in'
-      end
-    end
-  end
-
-  describe 'ヘッダーのテスト: ログインしている場合' do
-    let(:user) { create(:user) }
-
-    before do
-      visit new_user_session_path
-      fill_in 'user[name]', with: user.name
-      fill_in 'user[password]', with: user.password
-      click_button 'Log in'
-    end
-
-    context 'ヘッダーの表示を確認' do
-      it 'タイトルが表示される' do
-        expect(page).to have_content 'Bookers'
-      end
-      it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
-        home_link = find_all('a')[1].native.inner_text
-        expect(home_link).to match(/home/i)
-      end
-      it 'Usersリンクが表示される: 左上から2番目のリンクが「Users」である' do
-        users_link = find_all('a')[2].native.inner_text
-        expect(users_link).to match(/users/i)
-      end
-      it 'Booksリンクが表示される: 左上から3番目のリンクが「Books」である' do
-        books_link = find_all('a')[3].native.inner_text
-        expect(books_link).to match(/books/i)
-      end
-      it 'log outリンクが表示される: 左上から4番目のリンクが「logout」である' do
-        logout_link = find_all('a')[4].native.inner_text
-        expect(logout_link).to match(/logout/i)
       end
     end
   end
@@ -198,17 +171,17 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     before do
       visit new_user_session_path
-      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Log in'
+      click_button 'ログイン'
       logout_link = find_all('a')[4].native.inner_text
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
     end
 
     context 'ログアウト機能のテスト' do
-      it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
-        expect(page).to have_link '', href: '/home/about'
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてtop画面へのリンクが存在する' do
+        expect(page).to have_link '', href: '/'
       end
       it 'ログアウト後のリダイレクト先が、トップになっている' do
         expect(current_path).to eq '/'
