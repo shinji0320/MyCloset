@@ -10,7 +10,7 @@
                 <h5 class="card-title">アイテムの詳細</h5>
                 <p class="card-text">ユーザー名 :　<%= link_to user_path(@item.user) do %><%= @item.user.name %><% end %></p>
                 <p class="card-text">ジャンル名 :　<%= @item.genre.name %></p>
-                <p class="card-text">商品名　　 :　<%= @item.name %></p>
+                <p class="card-text">アイテム名 :　<%= @item.name %></p>
                 <p class="card-text">ブランド名 :　<%= @item.shop_name %></p>
                 <p class="card-text">説明　　　 :　<%= @item.detail %></p>
                   <% if @item.private == false %>

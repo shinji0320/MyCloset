@@ -118,67 +118,54 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/items/' + item.id.to_s + '/edit'
       end
-      it '「Editing Book」と表示される' do
-        expect(page).to have_content 'Editing Book'
+      it '「アイテム編集」と表示される' do
+        expect(page).to have_content 'アイテム編集'
       end
-      it 'title編集フォームが表示される' do
-        expect(page).to have_field 'book[title]', with: book.title
+      it 'ジャンル編集フォームが表示される' do
+        expect(page).to have_field 'item[genre_id]', with: item.genre_id
       end
-      it 'opinion編集フォームが表示される' do
-        expect(page).to have_field 'book[body]', with: book.body
+      it 'アイテム名編集フォームが表示される' do
+        expect(page).to have_field 'item[name]', with: item.name
       end
-      it 'Update Bookボタンが表示される' do
-        expect(page).to have_button 'Update Book'
+      it 'ブランド名編集フォームが表示される' do
+        expect(page).to have_field 'item[shop_name]', with: item.shop_name
       end
-      it 'Showリンクが表示される' do
-        expect(page).to have_link 'Show', href: book_path(book)
+      it '説明編集フォームが表示される' do
+        expect(page).to have_field 'item[detail]', with: item.detail
       end
-      it 'Backリンクが表示される' do
-        expect(page).to have_link 'Back', href: books_path
+      it '更新するボタンが表示される' do
+        expect(page).to have_button '更新する'
       end
     end
 
     context '編集成功のテスト' do
       before do
-        @book_old_title = book.title
-        @book_old_body = book.body
-        fill_in 'book[title]', with: Faker::Lorem.characters(number: 4)
-        fill_in 'book[body]', with: Faker::Lorem.characters(number: 19)
-        click_button 'Update Book'
+        @item_old_genre_id = item.genre_id
+        @item_old_name = item.name
+        @item_old_shop_name = item.shop_name
+        @item_old_detail = item.detail
+        fill_in 'item[genre_id]', with: Faker::Lorem.characters(number: 4)
+        fill_in 'item[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'item[shop_name]', with: Faker::Lorem.characters(number: 4)
+        fill_in 'item[detail]', with: Faker::Lorem.characters(number: 10)
+        click_button '更新する'
       end
 
-      it 'titleが正しく更新される' do
-        expect(book.reload.title).not_to eq @book_old_title
+      it 'ジャンル名が正しく更新される' do
+        expect(item.reload.genre_id).not_to eq @item_old_genre_id
       end
-      it 'bodyが正しく更新される' do
-        expect(book.reload.body).not_to eq @book_old_body
+      it 'アイテム名が正しく更新される' do
+        expect(item.reload.name).not_to eq @item_old_name
+      end
+      it 'ブランド名が正しく更新される' do
+        expect(item.reload.shop_name).not_to eq @item_old_shop_name
+      end
+      it '説明が正しく更新される' do
+        expect(item.reload.detail).not_to eq @item_old_detail
       end
       it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
-        expect(current_path).to eq '/books/' + book.id.to_s
-        expect(page).to have_content 'Book detail'
-      end
-    end
-  end
-
-  describe 'ユーザ一覧画面のテスト' do
-    before do
-      visit users_path
-    end
-
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/users'
-      end
-      it '自分と他人の画像が表示される: fallbackの画像がサイドバーの1つ＋一覧(2人)の2つの計3つ存在する' do
-        expect(all('img').size).to eq(3)
-      end
-      it '自分と他人の名前がそれぞれ表示される' do
-        expect(page).to have_content user.name
-        expect(page).to have_content other_user.name
-      end
-      it '自分と他人のshowリンクがそれぞれ表示される' do
-        expect(page).to have_link 'Show', href: user_path(user)
-        expect(page).to have_link 'Show', href: user_path(other_user)
+        expect(current_path).to eq '/items/' + item.id.to_s
+        expect(page).to have_content 'アイテムの詳細'
       end
     end
   end
@@ -192,19 +179,11 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s
       end
-      it '投稿一覧のユーザ画像のリンク先が正しい' do
+      it 'アイテム一覧のユーザ画像のリンク先が正しい' do
         expect(page).to have_link '', href: user_path(user)
-      end
-      it '投稿一覧に自分の投稿のtitleが表示され、リンクが正しい' do
-        expect(page).to have_link book.title, href: book_path(book)
-      end
-      it '投稿一覧に自分の投稿のopinionが表示される' do
-        expect(page).to have_content book.body
       end
       it '他人の投稿は表示されない' do
         expect(page).not_to have_link '', href: user_path(other_user)
-        expect(page).not_to have_content other_book.title
-        expect(page).not_to have_content other_book.body
       end
     end
   end
@@ -221,14 +200,17 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it '名前編集フォームに自分の名前が表示される' do
         expect(page).to have_field 'user[name]', with: user.name
       end
-      it '画像編集フォームが表示される' do
-        expect(page).to have_field 'user[profile_image]'
-      end
       it '自己紹介編集フォームに自分の自己紹介文が表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
-      it 'Update Userボタンが表示される' do
-        expect(page).to have_button 'Update User'
+      it '都道府県編集フォームに自分の都道府県が表示される' do
+        expect(page).to have_field 'user[prefecture]', with: user.introduction
+      end
+      it '画像編集フォームが表示される' do
+        expect(page).to have_field 'user[profile_image]'
+      end
+      it '更新するボタンが表示される' do
+        expect(page).to have_button '更新する'
       end
     end
 
@@ -236,9 +218,11 @@ describe '[STEP2] ユーザログイン後のテスト' do
       before do
         @user_old_name = user.name
         @user_old_intrpduction = user.introduction
-        fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)
-        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 19)
-        click_button 'Update User'
+        @user_old_prefecture = user.prefecture
+        fill_in 'user[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 15)
+        fill_in 'user[prefecture]', with: Faker::Lorem.characters(number: 5)
+        click_button '更新する'
       end
 
       it 'nameが正しく更新される' do
@@ -246,6 +230,9 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
       it 'introductionが正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_intrpduction
+      end
+      it 'prefectureが正しく更新される' do
+        expect(user.reload.prefecture).not_to eq @user_old_prefecture
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
         expect(current_path).to eq '/users/' + user.id.to_s
