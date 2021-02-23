@@ -3,145 +3,120 @@ require 'rails_helper'
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:book) { create(:book, user: user) }
-  let!(:other_book) { create(:book, user: other_user) }
+  let!(:item) { create(:item, user: user) }
+  let!(:other_item) { create(:item, user: other_user) }
 
   before do
     visit new_user_session_path
     fill_in 'user[name]', with: user.name
     fill_in 'user[password]', with: user.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
 
   describe 'ヘッダーのテスト: ログインしている場合' do
     context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
       subject { current_path }
 
-      it 'Homeを押すと、自分のユーザ詳細画面に遷移する' do
-        home_link = find_all('a')[1].native.inner_text
-        home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link home_link
-        is_expected.to eq '/users/' + user.id.to_s
+      it 'MyClosetを押すと、自分の商品ページに遷移する' do
+        item_link = find_all('a')[1].native.inner_text
+        item_link = item_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link item_link
+        is_expected.to eq '/item/' + item.id.to_s
       end
-      it 'Usersを押すと、ユーザ一覧画面に遷移する' do
-        users_link = find_all('a')[2].native.inner_text
-        users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link users_link
-        is_expected.to eq '/users'
+      it '投稿一覧を押すと、商品一覧覧画面に遷移する' do
+        items_link = find_all('a')[2].native.inner_text
+        items_link = items_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link items_link
+        is_expected.to eq '/items'
       end
-      it 'Booksを押すと、投稿一覧画面に遷移する' do
-        books_link = find_all('a')[3].native.inner_text
-        books_link = books_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link books_link
-        is_expected.to eq '/books'
+      it '投稿フォームを押すと、投稿フォームに遷移する' do
+        new_item_link = find_all('a')[3].native.inner_text
+        new_item_link = new_item_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link new_item_link
+        is_expected.to eq '/items' + new.to_s
       end
     end
   end
 
-  describe '投稿一覧画面のテスト' do
+  describe '商品一覧画面のテスト' do
     before do
-      visit books_path
+      visit items_path
     end
 
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/books'
+        expect(current_path).to eq '/items'
       end
       it '自分と他人の画像のリンク先が正しい' do
-        expect(page).to have_link '', href: user_path(book.user)
-        expect(page).to have_link '', href: user_path(other_book.user)
-      end
-      it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
-        expect(page).to have_link book.title, href: book_path(book)
-        expect(page).to have_link other_book.title, href: book_path(other_book)
-      end
-    end
-
-    context '投稿成功のテスト' do
-      before do
-        fill_in 'book[title]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'book[body]', with: Faker::Lorem.characters(number: 20)
-      end
-
-      it '自分の新しい投稿が正しく保存される' do
-        expect { click_button 'Create Book' }.to change(user.books, :count).by(1)
-      end
-      it 'リダイレクト先が、保存できた投稿の詳細画面になっている' do
-        click_button 'Create Book'
-        expect(current_path).to eq '/books/' + Book.last.id.to_s
+        expect(page).to have_link '', href: user_path(item.user)
+        expect(page).to have_link '', href: user_path(other_item.user)
       end
     end
   end
 
-  describe '自分の投稿詳細画面のテスト' do
+  describe '自分の商品詳細画面のテスト' do
     before do
-      visit book_path(book)
+      visit item_path(item)
     end
 
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/books/' + book.id.to_s
-      end
-      it '「Book detail」と表示される' do
-        expect(page).to have_content 'Book detail'
+        expect(current_path).to eq '/items/' + item.id.to_s
       end
       it 'ユーザ画像・名前のリンク先が正しい' do
-        expect(page).to have_link book.user.name, href: user_path(book.user)
+        expect(page).to have_link item.user.name, href: user_path(item.user)
       end
-      it '投稿のtitleが表示される' do
-        expect(page).to have_content book.title
+      it '商品の編集リンクが表示される' do
+        expect(page).to have_link 'アイテムを編集', href: edit_item_path(item)
       end
-      it '投稿のopinionが表示される' do
-        expect(page).to have_content book.body
-      end
-      it '投稿の編集リンクが表示される' do
-        expect(page).to have_link 'Edit', href: edit_book_path(book)
-      end
-      it '投稿の削除リンクが表示される' do
-        expect(page).to have_link 'Destroy', href: book_path(book)
+      it '商品の削除リンクが表示される' do
+        expect(page).to have_link 'アイテムを削除', href: item_path(item)
       end
     end
 
-    context '投稿成功のテスト' do
+    context '商品登録成功のテスト' do
       before do
-        fill_in 'book[title]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'book[body]', with: Faker::Lorem.characters(number: 20)
+        fill_in 'item[genre_id]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'item[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'item[shop_name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'item[detail]', with: Faker::Lorem.characters(number: 30)
+        # 本来だとbooleanで公開・非公開選択できるがわからないのでRspecで書き方調べる
       end
 
-      it '自分の新しい投稿が正しく保存される' do
-        expect { click_button 'Create Book' }.to change(user.books, :count).by(1)
+      it '自分の新しい商品が正しく保存される' do
+        expect { click_button '登録する' }.to change(user.items, :count).by(1)
       end
     end
 
     context '編集リンクのテスト' do
       it '編集画面に遷移する' do
-        click_link 'Edit'
-        expect(current_path).to eq '/books/' + book.id.to_s + '/edit'
+        click_link 'アイテムを編集'
+        expect(current_path).to eq '/items/' + item.id.to_s + '/edit'
       end
     end
 
     context '削除リンクのテスト' do
       before do
-        click_link 'Destroy'
+        click_link 'アイテムを削除'
       end
 
       it '正しく削除される' do
-        expect(Book.where(id: book.id).count).to eq 0
+        expect(Item.where(id: item.id).count).to eq 0
       end
-      it 'リダイレクト先が、投稿一覧画面になっている' do
-        expect(current_path).to eq '/books'
+      it 'リダイレクト先が、商品一覧画面になっている' do
+        expect(current_path).to eq '/items'
       end
     end
   end
 
-  describe '自分の投稿編集画面のテスト' do
+  describe '自分の商品編集画面のテスト' do
     before do
-      visit edit_book_path(book)
+      visit edit_item_path(item)
     end
 
     context '表示の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/books/' + book.id.to_s + '/edit'
+        expect(current_path).to eq '/items/' + item.id.to_s + '/edit'
       end
       it '「Editing Book」と表示される' do
         expect(page).to have_content 'Editing Book'
