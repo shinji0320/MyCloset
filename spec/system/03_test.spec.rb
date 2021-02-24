@@ -160,7 +160,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button 'ログイン'
     end
 
-  describe '他人の商品詳細画面のテスト' do
+    describe '他人の商品詳細画面のテスト' do
       before do
         visit item_path(other_item)
       end
@@ -195,13 +195,13 @@ describe '[STEP3] 仕上げのテスト' do
         end
       end
 
-    context '他人の商品編集画面' do
-      it '遷移できず、商品一覧画面にリダイレクトされる' do
-        visit edit_item_path(other_item)
-        expect(current_path).to eq '/items'
+      context '他人の商品編集画面' do
+        it '遷移できず、商品一覧画面にリダイレクトされる' do
+          visit edit_item_path(other_item)
+          expect(current_path).to eq '/items'
+        end
       end
     end
-  end
 
     describe '他人のユーザ詳細画面のテスト' do
       before do
@@ -216,11 +216,11 @@ describe '[STEP3] 仕上げのテスト' do
           expect(page).to have_link '', href: user_path(other_user)
         end
       end
-      
+
       context '他人のユーザ情報編集画面' do
-      it '遷移できず、自分のユーザ詳細画面にリダイレクトされる' do
-        visit edit_user_path(other_user)
-        expect(current_path).to eq '/users/' + user.id.to_s
+        it '遷移できず、自分のユーザ詳細画面にリダイレクトされる' do
+          visit edit_user_path(other_user)
+          expect(current_path).to eq '/users/' + user.id.to_s
         end
       end
     end
