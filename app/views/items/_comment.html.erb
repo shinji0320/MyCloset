@@ -16,7 +16,7 @@
       <td><%= item_comment.comment %></td>
       <% if item_comment.user == current_user %>
         <td>
-          <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), class: "btn btn-secondary", method: :delete, remote: true  %>
+          <%= link_to "コメントを削除",  item_item_comment_path(item_comment.item, item_comment), data: { confirm: '本当に消しますか？' }, class: "btn btn-secondary", method: :delete, remote: true  %>
         </td>
       <% end %>
     </tr>
