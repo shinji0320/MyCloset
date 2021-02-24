@@ -117,6 +117,7 @@ describe '[STEP3] 仕上げのテスト' do
         expect(page).to have_content "・名前は2文字以上で入力してください"
       end
     end
+  end
 
   describe 'ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する' do
     subject { current_path }
@@ -159,7 +160,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button 'ログイン'
     end
 
-    describe '他人の商品詳細画面のテスト' do
+  describe '他人の商品詳細画面のテスト' do
       before do
         visit item_path(other_item)
       end
@@ -200,6 +201,7 @@ describe '[STEP3] 仕上げのテスト' do
         expect(current_path).to eq '/items'
       end
     end
+  end
 
     describe '他人のユーザ詳細画面のテスト' do
       before do
@@ -215,112 +217,11 @@ describe '[STEP3] 仕上げのテスト' do
         end
       end
       
-    context '他人のユーザ情報編集画面' do
+      context '他人のユーザ情報編集画面' do
       it '遷移できず、自分のユーザ詳細画面にリダイレクトされる' do
         visit edit_user_path(other_user)
         expect(current_path).to eq '/users/' + user.id.to_s
-      end
-    end
-
-  describe 'グリッドシステムのテスト: container, row, col-xs-〇を正しく使えている' do
-    subject { page }
-
-    before do
-      visit new_user_session_path
-      fill_in 'user[name]', with: user.name
-      fill_in 'user[password]', with: user.password
-      click_button 'Log in'
-    end
-
-    it 'ユーザ一覧画面' do
-      visit users_path
-      is_expected.to have_selector '.container .row .col-md-3'
-      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
-    end
-    it 'ユーザ詳細画面' do
-      visit user_path(user)
-      is_expected.to have_selector '.container .row .col-md-3'
-      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
-    end
-    it '投稿一覧画面' do
-      visit books_path
-      is_expected.to have_selector '.container .row .col-md-3'
-      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
-    end
-    it '投稿詳細画面' do
-      visit book_path(book)
-      is_expected.to have_selector '.container .row .col-md-3'
-      is_expected.to have_selector '.container .row .col-md-8.offset-md-1'
-    end
-  end
-
-  describe 'アイコンのテスト' do
-    context 'トップ画面' do
-      subject { page }
-
-      before do
-        visit root_path
-      end
-
-      it '本のアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-book'
-      end
-    end
-
-    context 'アバウト画面' do
-      subject { page }
-
-      before do
-        visit '/home/about'
-      end
-
-      it '本のアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-book'
-      end
-    end
-
-    context 'ヘッダー: ログインしていない場合' do
-      subject { page }
-
-      before do
-        visit root_path
-      end
-
-      it 'Homeリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-home'
-      end
-      it 'Aboutリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-link'
-      end
-      it 'sign upリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-user-plus'
-      end
-      it 'loginリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-sign-in-alt'
-      end
-    end
-
-    context 'ヘッダー: ログインしている場合' do
-      subject { page }
-
-      before do
-        visit new_user_session_path
-        fill_in 'user[name]', with: user.name
-        fill_in 'user[password]', with: user.password
-        click_button 'Log in'
-      end
-
-      it 'Homeリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-home'
-      end
-      it 'Usersリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-users'
-      end
-      it 'Booksリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-book-open'
-      end
-      it 'log outリンクのアイコンが表示される' do
-        is_expected.to have_selector '.fas.fa-sign-out-alt'
+        end
       end
     end
   end
