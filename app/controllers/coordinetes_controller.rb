@@ -2,7 +2,8 @@ class CoordinetesController < ApplicationController
   before_action :ensure_coordinete, only: [:edit, :update, :destroy]
 
   def index
-    @coordinetes = Coordinete.all
+    
+    @coordinetes = Coordinete.where(user_id: current_user.id)
     @coordinete = Coordinete.new
   end
 
