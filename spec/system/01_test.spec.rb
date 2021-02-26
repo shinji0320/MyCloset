@@ -40,21 +40,21 @@ describe '[STEP1] ユーザログイン前のテスト' do
       subject { current_path }
 
       it 'aboutを押すと、アバウト画面に遷移する' do
-        about_link = find_all('a')[2].native.inner_text
+        about_link = find_all('a')[1].native.inner_text
         about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
         is_expected.to eq '/homes/about'
       end
       it 'sign_upを押すと、新規登録画面に遷移する' do
-        sign_up_link = find_all('a')[3].native.inner_text
+        sign_up_link = find_all('a')[2].native.inner_text
         sign_up_link = sign_up_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link sign_up_link
         is_expected.to eq '/users/sign_up'
       end
       it 'sign_inを押すと、ログイン画面に遷移する' do
-        sign_in_link = find_all('a')[4].native.inner_text
+        sign_in_link = find_all('a')[3].native.inner_text
         sign_in_link = sign_in_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link log_in_link
+        click_link sign_in_link
         is_expected.to eq '/users/sign_in'
       end
     end
@@ -105,7 +105,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
       it '新規登録後のリダイレクト先が、商品一覧ページになっている' do
         click_button '登録'
-        expect(current_path).to eq '/items/'
+        expect(current_path).to eq '/items'
       end
     end
   end
@@ -149,7 +149,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
 
       it 'ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている' do
-        expect(current_path).to eq '/items/'
+        expect(current_path).to eq '/items'
       end
     end
 

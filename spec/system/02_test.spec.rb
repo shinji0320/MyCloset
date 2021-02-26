@@ -5,10 +5,11 @@ describe '[STEP2] ユーザログイン後のテスト' do
   let!(:other_user) { create(:user) }
   let!(:item) { create(:item, user: user) }
   let!(:other_item) { create(:item, user: other_user) }
+  let!(:genre) { create(:genre) }
 
   before do
     visit new_user_session_path
-    fill_in 'user[name]', with: user.name
+    fill_in 'user[email]', with: user.name
     fill_in 'user[password]', with: user.password
     click_button 'ログイン'
   end
