@@ -1,28 +1,31 @@
 require 'rails_helper'
+# RSpec.describe 'yyyy' do
+#   create_list(:genre, 5, name: 'Hello, World')
+# end
 
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:item) { create(:item, user: user) }
-  let!(:other_item) { create(:item, user: other_user) }
   let!(:genre) { create(:genre) }
+  let!(:item) { create(:item, user: user, genre: genre) }
+  let!(:other_item) { create(:item, user: other_user, genre: genre) }
 
   before do
     visit new_user_session_path
-    fill_in 'user[email]', with: user.name
+    fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'ログイン'
   end
 
   describe 'ヘッダーのテスト: ログインしている場合' do
-    context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
+    context 'リンクの内容を確認' do
       subject { current_path }
 
-      it 'MyClosetを押すと、自分の商品ページに遷移する' do
-        item_link = find_all('a')[1].native.inner_text
-        item_link = item_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link item_link
-        is_expected.to eq '/item/' + item.id.to_s
+      it 'MyClosetを押すと、Myページに遷移する' do
+        user_link = find_all('a')[1].native.inner_text
+        user_link = user_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link user_link
+        is_expected.to eq '/users/' + user.id.to_s
       end
       it '投稿一覧を押すと、商品一覧覧画面に遷移する' do
         items_link = find_all('a')[2].native.inner_text
@@ -34,7 +37,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
         new_item_link = find_all('a')[3].native.inner_text
         new_item_link = new_item_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link new_item_link
-        is_expected.to eq '/items' + new.to_s
+        is_expected.to eq '/items/new'
       end
     end
   end
@@ -46,11 +49,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/items'
-      end
-      it '自分と他人の画像のリンク先が正しい' do
-        expect(page).to have_link '', href: user_path(item.user)
-        expect(page).to have_link '', href: user_path(other_item.user)
+        expect(items_path).to eq '/items'
       end
     end
   end
@@ -74,19 +73,34 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_link 'アイテムを削除', href: item_path(item)
       end
     end
+  end
+
+  describe '商品登録のテスト' do
+    before do
+      visit new_item_path
+    end
 
     context '商品登録成功のテスト' do
       before do
-        fill_in 'item[genre_id]', with: Faker::Lorem.characters(number: 5)
+        genre_id = Faker::Number.between(from: 1, to: 6)
+        select Genre.find(genre_id).name, from: 'item[genre_id]'
         fill_in 'item[name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'item[shop_name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'item[detail]', with: Faker::Lorem.characters(number: 30)
-        # 本来だとbooleanで公開・非公開選択できるがわからないのでRspecで書き方調べる
+        choose "item_private_false"
+        # 非公開ページのみになっている。ランダムに判定させたい
+        # fill_in 'item[private]', with: Faker::Boolean.boolean(true_ratio: 0.2)
       end
 
       it '自分の新しい商品が正しく保存される' do
         expect { click_button '登録する' }.to change(user.items, :count).by(1)
       end
+    end
+  end
+
+  describe '商品登録のテスト' do
+    before do
+      visit item_path(item)
     end
 
     context '編集リンクのテスト' do
