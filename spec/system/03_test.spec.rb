@@ -17,14 +17,14 @@ describe '[STEP3] 仕上げのテスト' do
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
       click_button '登録'
-      is_expected.to have_content 'successfully'
+      is_expected.to have_content 'アカウント登録に成功しました。'
     end
     it 'ユーザログイン成功時' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
-      is_expected.to have_content 'successfully'
+      is_expected.to have_content 'ログインしました。'
     end
     it 'ユーザログアウト成功時' do
       visit new_user_session_path
@@ -34,7 +34,7 @@ describe '[STEP3] 仕上げのテスト' do
       logout_link = find_all('a')[4].native.inner_text
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
-      is_expected.to have_content 'successfully'
+      is_expected.to have_content 'ログアウトしました'
     end
     it 'ユーザのプロフィール情報更新成功時' do
       visit new_user_session_path
@@ -51,12 +51,13 @@ describe '[STEP3] 仕上げのテスト' do
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
       visit new_item_path
-      fill_in 'item[genre_id]', with: Faker::Lorem.characters(number: 5)
+      genre_id = Faker::Number.between(from: 1, to: 6)
+      select Genre.find(genre_id).name, from: 'item[genre_id]'
       fill_in 'item[name]', with: Faker::Lorem.characters(number: 20)
       fill_in 'item[shop_name]', with: Faker::Lorem.characters(number: 5)
       fill_in 'item[detail]', with: Faker::Lorem.characters(number: 20)
       click_button '登録する'
-      is_expected.to have_content '登録できました。'
+      is_expected.to have_content '登録できました'
     end
     it '商品データの更新成功時' do
       visit new_user_session_path
@@ -65,7 +66,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button 'ログイン'
       visit edit_item_path(item)
       click_button '更新する'
-      is_expected.to have_content '変更しました。'
+      is_expected.to have_content '変更しました'
     end
   end
 
@@ -135,6 +136,10 @@ describe '[STEP3] 仕上げのテスト' do
       visit items_path
       is_expected.to eq '/users/sign_in'
     end
+    it '商品の登録画面' do
+      visit new_item_path
+      is_expected.to eq '/users/sign_in'
+    end
     it '商品詳細画面' do
       visit item_path(item)
       is_expected.to eq '/users/sign_in'
@@ -156,7 +161,7 @@ describe '[STEP3] 仕上げのテスト' do
   describe '他人の画面のテスト' do
     before do
       visit new_user_session_path
-      fill_in 'user[email]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
     end
@@ -212,9 +217,6 @@ describe '[STEP3] 仕上げのテスト' do
       context '表示の確認' do
         it 'URLが正しい' do
           expect(current_path).to eq '/users/' + other_user.id.to_s
-        end
-        it '商品一覧のユーザ画像のリンク先が正しい' do
-          expect(page).to have_link '', href: user_path(other_user)
         end
       end
 
