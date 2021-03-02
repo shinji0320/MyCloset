@@ -3,8 +3,9 @@ require 'rails_helper'
 describe '[STEP3] 仕上げのテスト' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:item) { create(:item, user: user) }
-  let!(:other_item) { create(:item, user: other_user) }
+  let!(:genre) { create(:genre) }
+  let!(:item) { create(:item, user: user, genre: genre) }
+  let!(:other_item) { create(:item, user:other_user, genre: genre) }
 
   describe 'サクセスメッセージのテスト' do
     subject { page }

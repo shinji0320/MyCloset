@@ -1,7 +1,4 @@
 require 'rails_helper'
-# RSpec.describe 'yyyy' do
-#   create_list(:genre, 5, name: 'Hello, World')
-# end
 
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
@@ -133,9 +130,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/items/' + item.id.to_s + '/edit'
       end
-      it '「アイテム編集」と表示される' do
-        expect(page).to have_content 'アイテム編集'
-      end
       it 'ジャンル編集フォームが表示される' do
         expect(page).to have_field 'item[genre_id]', with: item.genre_id
       end
@@ -159,10 +153,12 @@ describe '[STEP2] ユーザログイン後のテスト' do
         @item_old_name = item.name
         @item_old_shop_name = item.shop_name
         @item_old_detail = item.detail
-        fill_in 'item[genre_id]', with: Faker::Lorem.characters(number: 4)
+        genre_id = Faker::Number.between(from: 1, to: 6)
+        select Genre.find(genre_id).name, from: 'item[genre_id]'
         fill_in 'item[name]', with: Faker::Lorem.characters(number: 10)
         fill_in 'item[shop_name]', with: Faker::Lorem.characters(number: 4)
         fill_in 'item[detail]', with: Faker::Lorem.characters(number: 10)
+        choose "item_private_false"
         click_button '更新する'
       end
 
@@ -219,7 +215,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
       it '都道府県編集フォームに自分の都道府県が表示される' do
-        expect(page).to have_field 'user[prefecture]', with: user.introduction
+        expect(page).to have_field 'user[prefecture]', with: user.prefecture
       end
       it '画像編集フォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
