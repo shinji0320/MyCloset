@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP2] ユーザログイン後のテスト' do
+describe '[ユーザログイン後のテスト]' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:genre) { create(:genre) }
@@ -24,13 +24,13 @@ describe '[STEP2] ユーザログイン後のテスト' do
         click_link user_link
         is_expected.to eq '/users/' + user.id.to_s
       end
-      it '投稿一覧を押すと、商品一覧覧画面に遷移する' do
+      it '投稿一覧を押すと、商品一覧覧ページに遷移する' do
         items_link = find_all('a')[2].native.inner_text
         items_link = items_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link items_link
         is_expected.to eq '/items'
       end
-      it '投稿フォームを押すと、投稿フォームに遷移する' do
+      it '投稿フォームを押すと、アイテムの新規登録ページに遷移する' do
         new_item_link = find_all('a')[3].native.inner_text
         new_item_link = new_item_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link new_item_link
@@ -39,7 +39,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-  describe '商品一覧画面のテスト' do
+  describe '商品一覧ページのテスト' do
     before do
       visit items_path
     end
@@ -51,7 +51,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-  describe '自分の商品詳細画面のテスト' do
+  describe '自分のアイテム詳細ページのテスト' do
     before do
       visit item_path(item)
     end
@@ -63,21 +63,21 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'ユーザ画像・名前のリンク先が正しい' do
         expect(page).to have_link item.user.name, href: user_path(item.user)
       end
-      it '商品の編集リンクが表示される' do
+      it 'アイテムの編集リンクが表示される' do
         expect(page).to have_link 'アイテムを編集', href: edit_item_path(item)
       end
-      it '商品の削除リンクが表示される' do
+      it 'アイテムの削除リンクが表示される' do
         expect(page).to have_link 'アイテムを削除', href: item_path(item)
       end
     end
   end
 
-  describe '商品登録のテスト' do
+  describe 'アイテムの登録のテスト' do
     before do
       visit new_item_path
     end
 
-    context '商品登録成功のテスト' do
+    context 'アイテムの登録成功のテスト' do
       before do
         genre_id = Faker::Number.between(from: 1, to: 6)
         select Genre.find(genre_id).name, from: 'item[genre_id]'
@@ -89,19 +89,19 @@ describe '[STEP2] ユーザログイン後のテスト' do
         # fill_in 'item[private]', with: Faker::Boolean.boolean(true_ratio: 0.2)
       end
 
-      it '自分の新しい商品が正しく保存される' do
+      it '自分の新しいアイテムが正しく保存される' do
         expect { click_button '登録する' }.to change(user.items, :count).by(1)
       end
     end
   end
 
-  describe '商品登録のテスト' do
+  describe 'アイテム登録のテスト' do
     before do
       visit item_path(item)
     end
 
     context '編集リンクのテスト' do
-      it '編集画面に遷移する' do
+      it '編集ページに遷移する' do
         click_link 'アイテムを編集'
         expect(current_path).to eq '/items/' + item.id.to_s + '/edit'
       end
@@ -121,7 +121,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-  describe '自分の商品編集画面のテスト' do
+  describe '自分のアイテム編集ページのテスト' do
     before do
       visit edit_item_path(item)
     end
@@ -174,14 +174,14 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it '説明が正しく更新される' do
         expect(item.reload.detail).not_to eq @item_old_detail
       end
-      it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
+      it 'リダイレクト先が、更新したアイテムの詳細ページになっている' do
         expect(current_path).to eq '/items/' + item.id.to_s
         expect(page).to have_content 'アイテムの詳細'
       end
     end
   end
 
-  describe '自分のユーザ詳細画面のテスト' do
+  describe '自分のユーザ詳細ページのテスト' do
     before do
       visit user_path(user)
     end
@@ -199,7 +199,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-  describe '自分のユーザ情報編集画面のテスト' do
+  describe '自分のユーザ編集ページのテスト' do
     before do
       visit edit_user_path(user)
     end
@@ -208,16 +208,16 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
       end
-      it '名前編集フォームに自分の名前が表示される' do
+      it '名前の編集フォームに自分の名前が表示される' do
         expect(page).to have_field 'user[name]', with: user.name
       end
-      it '自己紹介編集フォームに自分の自己紹介文が表示される' do
+      it '自己紹介の編集フォームに自分の自己紹介文が表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
-      it '都道府県編集フォームに自分の都道府県が表示される' do
+      it '都道府県の編集フォームに自分の都道府県が表示される' do
         expect(page).to have_field 'user[prefecture]', with: user.prefecture
       end
-      it '画像編集フォームが表示される' do
+      it '画像編の集フォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
       end
       it '更新するボタンが表示される' do
@@ -236,13 +236,13 @@ describe '[STEP2] ユーザログイン後のテスト' do
         click_button '更新する'
       end
 
-      it 'nameが正しく更新される' do
+      it '名前が正しく更新される' do
         expect(user.reload.name).not_to eq @user_old_name
       end
-      it 'introductionが正しく更新される' do
+      it '自己紹介が正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_intrpduction
       end
-      it 'prefectureが正しく更新される' do
+      it '都道府県が正しく更新される' do
         expect(user.reload.prefecture).not_to eq @user_old_prefecture
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do

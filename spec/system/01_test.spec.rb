@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe '[STEP1] ユーザログイン前のテスト' do
-  describe 'トップ画面のテスト' do
+describe '[ユーザログイン前のテスト]' do
+  describe 'トップページのテスト' do
     before do
       visit root_path
     end
@@ -13,7 +13,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
     end
   end
 
-  describe 'アバウト画面のテスト' do
+  describe 'アバウトページのテスト' do
     before do
       visit '/homes/about'
     end
@@ -39,19 +39,19 @@ describe '[STEP1] ユーザログイン前のテスト' do
     context 'リンクの内容を確認' do
       subject { current_path }
 
-      it 'aboutを押すと、アバウト画面に遷移する' do
+      it 'aboutを押すと、アバウトページに遷移する' do
         about_link = find_all('a')[1].native.inner_text
         about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
         is_expected.to eq '/homes/about'
       end
-      it 'sign_upを押すと、新規登録画面に遷移する' do
+      it 'sign_upを押すと、新規登録ページに遷移する' do
         sign_up_link = find_all('a')[2].native.inner_text
         sign_up_link = sign_up_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link sign_up_link
         is_expected.to eq '/users/sign_up'
       end
-      it 'sign_inを押すと、ログイン画面に遷移する' do
+      it 'sign_inを押すと、ログインページに遷移する' do
         sign_in_link = find_all('a')[3].native.inner_text
         sign_in_link = sign_in_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link sign_in_link
@@ -166,7 +166,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
     end
   end
 
-  describe 'ユーザログアウトのテスト' do
+  describe 'ログアウトのテスト' do
     let(:user) { create(:user) }
 
     before do

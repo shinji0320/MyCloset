@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP3] 仕上げのテスト' do
+describe '[仕上げのテスト]' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:genre) { create(:genre) }
@@ -13,7 +13,7 @@ describe '[STEP3] 仕上げのテスト' do
     it 'ユーザ新規登録成功時' do
       visit new_user_registration_path
       fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)
-      fill_in 'user[email]', with: 'a' + user.email # 確実にuser, other_userと違う文字列にするため
+      fill_in 'user[email]', with: 'a' + user.email
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
       click_button '登録'
@@ -45,7 +45,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button '更新する'
       is_expected.to have_content '変更しました。'
     end
-    it '商品の新規投稿成功時' do
+    it 'アイテムの新規投稿成功時' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -59,7 +59,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button '登録する'
       is_expected.to have_content '登録できました'
     end
-    it '商品データの更新成功時' do
+    it 'アイテムデータの更新成功時' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
@@ -87,7 +87,7 @@ describe '[STEP3] 仕上げのテスト' do
       it '新規登録されない' do
         expect { click_button '登録' }.not_to change(User.all, :count)
       end
-      it '新規登録画面を表示しており、フォームの内容が正しい' do
+      it '新規登録ページを表示しており、フォームの内容が正しい' do
         click_button '登録'
         expect(page).to have_content '登録'
         expect(page).to have_field 'user[name]', with: @name
@@ -112,7 +112,7 @@ describe '[STEP3] 仕上げのテスト' do
       it '更新されない' do
         expect(user.reload.name).to eq @user_old_name
       end
-      it 'ユーザ編集画面を表示しており、フォームの内容が正しい' do
+      it 'ユーザ編集ページを表示しており、フォームの内容が正しい' do
         expect(page).to have_field 'user[name]', with: @name
       end
       it 'バリデーションエラーが表示される' do
@@ -121,7 +121,7 @@ describe '[STEP3] 仕上げのテスト' do
     end
   end
 
-  describe 'ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する' do
+  describe 'アクセス制限のテスト: ログインページに遷移する' do
     subject { current_path }
 
     it 'ユーザ詳細画面' do
@@ -158,7 +158,7 @@ describe '[STEP3] 仕上げのテスト' do
     end
   end
 
-  describe '他人の画面のテスト' do
+  describe '他人のページのテスト' do
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -166,7 +166,7 @@ describe '[STEP3] 仕上げのテスト' do
       click_button 'ログイン'
     end
 
-    describe '他人の商品詳細画面のテスト' do
+    describe '他人の商品詳細ページのテスト' do
       before do
         visit item_path(other_item)
       end
@@ -181,35 +181,35 @@ describe '[STEP3] 仕上げのテスト' do
         it '名前のリンク先が正しい' do
           expect(page).to have_link other_item.user.name
         end
-        it '商品のジャンル名が表示される' do
+        it 'アイテムのジャンル名が表示される' do
           expect(page).to have_content other_item.genre_id
         end
-        it '商品のアイテム名が表示される' do
+        it 'アイテムの名前が表示される' do
           expect(page).to have_content other_item.name
         end
-        it '商品のブランド名が表示される' do
+        it 'アイテムのブランド名が表示される' do
           expect(page).to have_content other_item.shop_name
         end
-        it '商品の説明が表示される' do
+        it 'アイテムの説明が表示される' do
           expect(page).to have_content other_item.detail
         end
-        it '投稿の編集リンクが表示されない' do
+        it 'アイテムの編集リンクが表示されない' do
           expect(page).not_to have_link 'アイテムの編集'
         end
-        it '投稿の削除リンクが表示されない' do
+        it 'アイテムの削除リンクが表示されない' do
           expect(page).not_to have_link 'アイテムの削除'
         end
       end
 
-      context '他人の商品編集画面' do
-        it '遷移できず、商品一覧画面にリダイレクトされる' do
+      context '他人の商品編集ページ' do
+        it '遷移できず、商品一覧ページにリダイレクトされる' do
           visit edit_item_path(other_item)
           expect(current_path).to eq '/items'
         end
       end
     end
 
-    describe '他人のユーザ詳細画面のテスト' do
+    describe '他人のユーザ詳細ページのテスト' do
       before do
         visit user_path(other_user)
       end
@@ -220,8 +220,8 @@ describe '[STEP3] 仕上げのテスト' do
         end
       end
 
-      context '他人のユーザ情報編集画面' do
-        it '遷移できず、自分のユーザ詳細画面にリダイレクトされる' do
+      context '他人のユーザ情報編集ページ' do
+        it '遷移できず、自分のユーザ詳細ページにリダイレクトされる' do
           visit edit_user_path(other_user)
           expect(current_path).to eq '/users/' + user.id.to_s
         end
