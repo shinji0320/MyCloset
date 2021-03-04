@@ -36,7 +36,7 @@
 - クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
-ワイヤーフレーム  
+- ワイヤーフレーム  
 https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/
 - ER図  
 https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9
@@ -49,19 +49,19 @@ https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l
 https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTnAcM/edit#gid=0
 
 **主要な機能**
-- ログイン機能
+- ユーザー認証
 - コメント機能（非同期通信）
 - いいね機能（非同期通信）
 - フォロー機能（非同期通信）
 - 検索機能
 - ランキング
 - コーディネート機能
-- おすすめの商品を表示
-- 天気予報
+- おすすめの商品を表示( cron使用 )
+- 天気予報( WebAPI使用 )
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML, CSS, JavaScript, Ruby, SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
