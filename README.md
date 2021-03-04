@@ -36,17 +36,17 @@
 - クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
- - ワイヤーフレーム  
+ワイヤーフレーム  
 https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/
- - ER図  
+ER図  
 https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9
- - テーブル定義書  
+テーブル定義書  
 https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing
- - アプリケーション詳細設計  
+アプリケーション詳細設計  
 https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0
 
 ## 機能一覧
-https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTnAcM/edit#gid=0
+https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTnAcM/edit#gid=0  
 ***主要な機能***
 - ログイン機能
 - コメント機能（非同期通信）
