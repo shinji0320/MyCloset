@@ -15,8 +15,8 @@
 着る機会のない服が溜まっている現状がありました。  
 **なぜ、着ていないのか？**  
 買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて  
-今度着ようと思いそのまま忘れてしまっていました。
-
+今度着ようと思いそのまま忘れてしまっていました。  
+クローゼットの中を管理できると買っても着ない服を買わずに済むと考えました。
 
 ***改善策***
 1. 買う前にクローゼットの中の服が確認できれば買うときに必要のない服を買わずに済む。
@@ -38,8 +38,8 @@
 |:-----------:|:------------:|
 | [ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/) | AdobeXD|
 | [ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9) | drawio |
-| [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing) | スプレットシート |
-| [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレットシート |
+| [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing) | スプレッドシート |
+| [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレッドシート |
 
 ## 機能一覧
 **主要な機能**
