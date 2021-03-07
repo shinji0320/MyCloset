@@ -12,7 +12,7 @@
 
 ## テーマを選んだ理由
 
-クローゼットの中に一度も着ていない服があったからです。
+クローゼットの中に一度も着ていない服があったからです。  
 
 ***なぜ、着ていないのか？***
 
@@ -36,17 +36,12 @@
 クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
-| Center align | Center align |
+| 一覧 | 使用したツール |
 |:-----------:|:------------:|
 | [ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/) | AdobeXD|
 | [ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9) | drawio |
 | [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing) | スプレットシート |
 | [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレットシート |
-<!--| left       | right       | center       |-->
-<!--[ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)AdobeXD  -->
-<!--[ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)drawio  -->
-<!--[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)スプレットシート  -->
-<!--[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)スプレットシート  -->
 
 ## 機能一覧
 **主要な機能**
