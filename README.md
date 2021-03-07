@@ -1,5 +1,8 @@
 # MyCloset
 
+## サイトテーマ
+洋服好きの女性のための管理サイト
+
 ## サイト概要
 
 クローゼットの中の服を可視化できます｡  
@@ -9,8 +12,6 @@
 
 <img width="1449" alt="スクリーンショット 2021-03-04 14 07 27" src="https://user-images.githubusercontent.com/66851090/109914308-06eca000-7cf3-11eb-8637-1119a54e2e91.png">
 
-## サイトテーマ
-洋服好きの女性のための管理サイト
 
 ### テーマを選んだ理由
 クローゼットの中に一度も着ていない服があったからです。
@@ -35,28 +36,28 @@
 - クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
-- ワイヤーフレーム  
+ワイヤーフレーム  
 https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/
-- ER図  
+ER図  
 https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9
-- テーブル定義書  
+テーブル定義書  
 https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing
-- アプリケーション詳細設計  
+アプリケーション詳細設計  
 https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0
 
 ## 機能一覧
 https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTnAcM/edit#gid=0
 
 **主要な機能**
-- ユーザー認証
-- コメント機能（非同期通信）
-- いいね機能（非同期通信）
-- フォロー機能（非同期通信）
-- 検索機能
-- ランキング
-- コーディネート機能
-- おすすめの商品を表示( cron使用 )
-- 天気予報( WebAPI使用 )
+1. ユーザー認証
+1. コメント機能（非同期通信）
+1. いいね機能（非同期通信）
+1. フォロー機能（非同期通信）
+1. 検索機能
+1. ランキング
+1. コーディネート機能
+1. おすすめの商品を表示( cron使用 )
+1. 天気予報( WebAPI使用 )
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -66,4 +67,4 @@ https://docs.google.com/spreadsheets/d/1NbPF5B69iJEW0Z0_ILl9c5klG89ri9GAAvSrNYTn
 - IDE：Cloud9
 
 ## 使用素材
-- O-DAN https://o-dan.net/ja/
+O-DAN https://o-dan.net/ja/
