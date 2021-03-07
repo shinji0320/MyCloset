@@ -10,11 +10,12 @@
 <img width="1449" alt="スクリーンショット 2021-03-04 14 07 27" src="https://user-images.githubusercontent.com/66851090/109914308-06eca000-7cf3-11eb-8637-1119a54e2e91.png">
 
 
-### テーマを選んだ理由
+## テーマを選んだ理由
+
 クローゼットの中に一度も着ていない服があったからです。
 
 ***なぜ、着ていないのか？***
-- 買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて  
+買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて  
 今度着ようと思いそのまま忘れてしまっていました。
 
 ***改善策***
@@ -23,20 +24,21 @@
 
 このように考えましたので作成することになりました。
 
-### ターゲットユーザ
-- 10〜30代くらいのショッピングが好きな女性
+## ターゲットユーザ
+
+10〜30代くらいのショッピングが好きな女性
 
 ## 主な利用シーン
-- 今日の天気・気温を確認し、服を選ぶ事ができます。
-- ウインドショッピング中に気に入った服があった時、  
+今日の天気・気温を確認し、服を選ぶ事ができます。  
+ウインドショッピング中に気に入った服があった時、  
 自身が持っている服と合わすことが出来るか確認できたり、同じものを持ってないか把握できる。
-- クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
+クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
 
-[ワイヤーフレーム(AdobeXD)](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)  
-[ER図(drawio)](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)  
-[テーブル定義書(スプレットシート)](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)  
+[ワイヤーフレーム        (AdobeXD)](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)  
+[ER図                    (drawio)](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)  
+[テーブル定義書          (スプレットシート)](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)  
 [アプリケーション詳細設計(スプレットシート)](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)  
 
 ## 機能一覧
