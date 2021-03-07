@@ -3,9 +3,9 @@
 
 ## 概要
 
-クローゼットの中をWebで管理できるアプリです。  
-持っている服をWebで把握できます。  
-コーディネートを保存できたり、今日の天気を確認できたり、服選びがスムーズになります。  
+クローゼットの中をWebで管理できるアプリです。
+持っている服をWebで把握できます。
+コーディネートを保存できたり、今日の天気を確認できたり、服選びがスムーズになります。
 
 <img width="1449" alt="スクリーンショット 2021-03-04 14 07 27" src="https://user-images.githubusercontent.com/66851090/109914308-06eca000-7cf3-11eb-8637-1119a54e2e91.png">
 
@@ -14,9 +14,9 @@
 
 クローゼットの中に一度も着ていない服があったからです。
 
-***なぜ、着ていないのか？***  
+***なぜ、着ていないのか？***
 
-買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて  
+買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて
 今度着ようと思いそのまま忘れてしまっていました。
 
 ***改善策***
@@ -30,17 +30,23 @@
 10〜30代くらいのショッピングが好きな女性
 
 ## 主な利用シーン
-今日の天気・気温を確認し、服を選ぶ事ができます。  
-ウインドショッピング中に気に入った服があった時、  
+今日の天気・気温を確認し、服を選ぶ事ができます。
+ウインドショッピング中に気に入った服があった時、
 自身が持っている服と合わすことが出来るか確認できたり、同じものを持ってないか把握できる。
 クローゼットの中のおすすめの服をどの店で買ったかなどを掲載し、ユーザー同士で教えあうことができます。
 
 ## 設計書
-
-[ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)AdobeXD  
-[ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)drawio  
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)スプレットシート  
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)スプレットシート  
+| Center align | Center align |
+|:-----------:|:------------:|
+| [ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/) | AdobeXD|
+| [ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9) | drawio |
+| [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing) | スプレットシート |
+| [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレットシート |
+<!--| left       | right       | center       |-->
+<!--[ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)AdobeXD  -->
+<!--[ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)drawio  -->
+<!--[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)スプレットシート  -->
+<!--[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)スプレットシート  -->
 
 ## 機能一覧
 **主要な機能**
@@ -60,7 +66,7 @@
 
 ## 開発環境
 - OS：Linux(CentOS)
-- HTML, CSS, Bootstrap 
+- HTML, CSS, Bootstrap
 - JavaScript, jQuery
 - Ruby-2.6.3, Ruby on Rails-5.2.4, RSpec
 - MySQL-5.7.22
