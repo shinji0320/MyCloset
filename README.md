@@ -14,7 +14,8 @@
 
 クローゼットの中に一度も着ていない服があったからです。
 
-***なぜ、着ていないのか？***
+***なぜ、着ていないのか？***  
+
 買うときは、気に入って買いましたが家に帰って着てみると合わせる服が無くて  
 今度着ようと思いそのまま忘れてしまっていました。
 
@@ -36,10 +37,10 @@
 
 ## 設計書
 
-[ワイヤーフレーム        (AdobeXD)](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)  
-[ER図                    (drawio)](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)  
-[テーブル定義書          (スプレットシート)](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)  
-[アプリケーション詳細設計(スプレットシート)](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)  
+[ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)AdobeXD  
+[ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)drawio  
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)スプレットシート  
+[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)スプレットシート  
 
 ## 機能一覧
 **主要な機能**
