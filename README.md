@@ -34,20 +34,20 @@
 
 ## 設計書
 
-[ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)  
-[ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)  
-[テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)  
-[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)  
+[ワイヤーフレーム(AdobeXD)](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/)  
+[ER図(drawio)](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9)  
+[テーブル定義書(スプレットシート)](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing)  
+[アプリケーション詳細設計(スプレットシート)](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0)  
 
 ## 機能一覧
 **主要な機能**
 
-1. ユーザー認証
+1. ユーザー認証（簡単ログインボタン設置）
 1. コメント機能（非同期通信）
 1. いいね機能（非同期通信）
 1. フォロー機能（非同期通信）
 1. 検索機能
-1. ランキング
+1. ランキング機能
 1. コーディネート機能
 1. おすすめの商品を表示( cron使用 )
 1. 天気予報( WebAPI使用 )
@@ -57,9 +57,11 @@
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML, CSS, JavaScript, Ruby, SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
+- HTML, CSS, Bootstrap 
+- JavaScript, jQuery
+- Ruby-2.6.3, Ruby on Rails-5.2.4, RSpec
+- MySQL-5.7.22
+- AWS(EC2, RDS, Route 53)
 - IDE：Cloud9
 
 ## 使用素材
