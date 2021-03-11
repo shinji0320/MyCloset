@@ -33,9 +33,10 @@
 | 一覧 | 使用したツール |
 |:-----------:|:------------:|
 | [ワイヤーフレーム](https://xd.adobe.com/view/e86a3f4f-e31e-469a-8532-e0df241d5585-bd39/) | AdobeXD|
-| [ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9) | drawio |
+| [ER図](https://app.diagrams.net/#G1ciL2UjRAVujDVFKF2kFhLc84BEua-1P9) | draw.io |
 | [テーブル定義書](https://docs.google.com/spreadsheets/d/1ZDqj3qq5zncNYNZmOahXYLYmWQqtLxjFxLruldG2CU0/edit?usp=sharing) | スプレッドシート |
 | [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレッドシート |
+| [インフラ構成図](https://app.diagrams.net/#G1YotM0xoGngT4TplzBOrYm3pHwRLdD2Xl) | draw.io |
 
 ## 機能一覧
 **主要な機能**
