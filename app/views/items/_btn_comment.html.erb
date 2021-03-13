@@ -17,20 +17,20 @@
             </button>
           </div>
           <%= form_with model:[item, item_comment] do |f| %>
-          <div class="modal-body">
+            <div class="modal-body">
+              <div class="form-group">
                 <%= render 'layouts/errors', obj: item_comment %>
-               <div class="form-group">
                 <%= f.label :コメント %>
                 <%= f.text_area :comment, placeholder: "ここへ記入", class: "form-control-file" %>
               </div>
-            <div class="modal-footer">
-              <div class="form-group">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= f.submit "送信する", class: 'btn btn-success'%>
+              <div class="modal-footer">
+                <div class="form-group">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.submit "送信する", class: 'btn btn-success'%>
+                </div>
               </div>
             </div>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ class CoordinetesController < ApplicationController
   before_action :ensure_coordinete, only: [:edit, :update, :destroy]
 
   def index
-    
     @coordinetes = Coordinete.where(user_id: current_user.id)
     @coordinete = Coordinete.new
   end
@@ -15,7 +14,8 @@ class CoordinetesController < ApplicationController
         @coordinete.coordinete_tables.new(item_id: item_id)
         @coordinete.coordinete_tables
       end
-      if @coordinete.save
+      if @coordinete.save 
+        #親クラスと子クラスが一緒にsave出来なかったので分けました。リファクタリングすること
         flash[:notice] = "コーディネートを追加しました"
         redirect_to coordinetes_path
       else
