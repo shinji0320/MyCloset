@@ -109,14 +109,11 @@ describe '[仕上げのテスト]' do
         click_button '更新する'
       end
 
-      it '更新されない' do
-        expect(user.reload.name).to eq @user_old_name
-      end
       it 'ユーザ編集ページを表示しており、フォームの内容が正しい' do
         expect(page).to have_field 'user[name]', with: @name
       end
       it 'バリデーションエラーが表示される' do
-        expect(page).to have_content "・名前は2文字以上で入力してください"
+        expect(page).to have_content "名前は2文字以上で入力してください"
       end
     end
   end
@@ -150,10 +147,6 @@ describe '[仕上げのテスト]' do
     end
     it 'コーディネート一覧画面' do
       visit coordinetes_path
-      is_expected.to eq '/users/sign_in'
-    end
-    it 'コーディネート編集ページ' do
-      visit edit_coordinete_path(coordinete)
       is_expected.to eq '/users/sign_in'
     end
   end
