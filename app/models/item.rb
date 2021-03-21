@@ -11,6 +11,8 @@ class Item < ApplicationRecord
   validates :detail, presence: true, length: { maximum: 200 }
   validates :private, inclusion: { in: [true, false] }
   attachment :image
+  
+  scope :published, -> { where(private: true) }
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -18,13 +20,13 @@ class Item < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Item.where(name: content)
+      where(name: content)
     elsif method == 'forward'
-      Item.where('name LIKE ?', content + '%')
+      where('name LIKE ?', content + '%')
     elsif method == 'backward'
-      Item.where('name LIKE ?', '%' + content)
+      where('name LIKE ?', '%' + content)
     else
-      Item.where('name LIKE ?', '%' + content + '%')
+      where('name LIKE ?', '%' + content + '%')
     end
   end
 end

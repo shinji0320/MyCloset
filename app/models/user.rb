@@ -18,6 +18,10 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
   attachment :profile_image
+  
+  def me?(user_id)
+    id == user_id
+  end
 
   def follow(other_user)
     unless self == other_user
@@ -36,13 +40,13 @@ class User < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      User.where(name: content)
+      where(name: content)
     elsif method == 'forward'
-      User.where('name LIKE ?', content + '%')
+      where('name LIKE ?', content + '%')
     elsif method == 'backward'
-      User.where('name LIKE ?', '%' + content)
+      where('name LIKE ?', '%' + content)
     else
-      User.where('name LIKE ?', '%' + content + '%')
+      where('name LIKE ?', '%' + content + '%')
     end
   end
 end

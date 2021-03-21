@@ -15,7 +15,8 @@ class CoordinetesController < ApplicationController
         @coordinete.coordinete_tables
       end
       if @coordinete.save 
-        #親クラスと子クラスが一緒にsave出来なかったので分けました。リファクタリングすること
+        #親クラスと子クラスが一緒にsave出来なかったので分けました。
+        #リファクタリングすること
         flash[:notice] = "コーディネートを追加しました"
         redirect_to coordinetes_path
       else

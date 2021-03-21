@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :ensure_user, only: [:show, :edit, :update]
 
   def show
-    if @user != current_user
+    if !@user.me?(current_user)
       @items = @user.items.where(private: "true")
     else
       @items = @user.items
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user != current_user
+    if !@user.me?(current_user)
       redirect_to user_path(current_user)
     end
   end

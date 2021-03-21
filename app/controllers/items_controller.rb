@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.where(private: "true").page(params[:page]).reverse_order
+    @items = Item.published.page(params[:page]).reverse_order
     @item_comment = ItemComment.new
     @recommendations = Recommendation.all
   end
@@ -60,7 +60,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:genre_id, :name, :shop_name, :detail, :image, :private)
-    # score
   end
 
   def ensure_item
