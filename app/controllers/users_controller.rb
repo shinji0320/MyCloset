@@ -3,14 +3,14 @@ class UsersController < ApplicationController
 
   def show
     if !@user.me?(current_user)
-      @items = @user.items.published
+      @items = @user.items.where(private: "true")
     else
       @items = @user.items
     end
   end
 
   def edit
-    if !@user.me?(current_user)
+    if @user != current_user
       redirect_to user_path(current_user)
     end
   end
