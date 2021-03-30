@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     if !@user.me?(current_user)
-      @items = @user.items.where(private: "true")
+      @items = @user.items.published
     else
       @items = @user.items
     end
