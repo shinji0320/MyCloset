@@ -109,6 +109,9 @@ describe '[仕上げのテスト]' do
         click_button '更新する'
       end
 
+      it '更新されない' do
+        expect(user.reload.name).to eq @name
+      end
       it 'ユーザ編集ページを表示しており、フォームの内容が正しい' do
         expect(page).to have_field 'user[name]', with: @name
       end

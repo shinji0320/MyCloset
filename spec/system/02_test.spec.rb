@@ -242,7 +242,7 @@ describe '[ユーザログイン後のテスト]' do
       it '自己紹介が正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_intrpduction
       end
-      it '都道府県が正しく更新される' do
+      it 'が正しく更新される' do
         expect(user.reload.prefecture).not_to eq @user_old_prefecture
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
