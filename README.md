@@ -43,7 +43,10 @@ https://mycloset.work/
 | [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1FinqAkHowUu_CVKUsqRTsY3JZBOoBqONf_JNxL1l67k/edit#gid=0) | スプレッドシート |
 | [インフラ構成図](https://app.diagrams.net/#G1YotM0xoGngT4TplzBOrYm3pHwRLdD2Xl) | draw.io |
 
-<img width="893" alt="インフラ構成図" src="https://user-images.githubusercontent.com/66851090/113688641-77c51480-9704-11eb-96e7-814ba837636a.png">
+#インフラ構成図
+
+<img width="936" alt="インフラ構成図" src="https://user-images.githubusercontent.com/66851090/113689559-70ead180-9705-11eb-9671-8341623c54e3.png">
+
 ## 機能一覧
 **主要な機能**
 
