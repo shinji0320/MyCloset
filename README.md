@@ -69,7 +69,7 @@ https://mycloset.work/
 - JavaScript, jQuery
 - Ruby-2.6.3, Ruby on Rails-5.2.4, RSpec
 - MySQL-5.7.22
-- AWS(EC2, RDS, Route 53)
+- AWS(EC2, RDS, Route53, S3)
 - IDE：Cloud9
 
 ## 使用素材
